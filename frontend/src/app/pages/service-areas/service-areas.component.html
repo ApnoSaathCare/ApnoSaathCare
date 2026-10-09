@@ -1,0 +1,105 @@
+<section class="page-header">
+  <div class="container">
+    <span class="section-subtitle">Local Coverage in Vadodara</span>
+    <h1 class="page-title">Service Areas in Vadodara</h1>
+    <p class="page-description">
+      We are dedicated to providing reliable, dignified non-medical elder care support across neighborhood localities in Vadodara, Gujarat.
+    </p>
+  </div>
+</section>
+
+<!-- Interactive Checker Section -->
+<section class="section-sm">
+  <div class="container container-narrow">
+    <app-area-checker></app-area-checker>
+  </div>
+</section>
+
+<!-- Full Vadodara Coverage Directory -->
+<section class="section section-bg-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-subtitle">Vadodara Directory</span>
+      <h2 class="section-title">Active Localities & Expansion Zones</h2>
+      <p class="section-description">
+        Explore confirmed coverage and scheduling notes for neighborhoods across Vadodara.
+      </p>
+
+      <!-- Search Filter Bar -->
+      <div class="search-bar-wrap">
+        <div class="search-input-box">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input 
+            type="text" 
+            [(ngModel)]="searchQuery" 
+            placeholder="Filter by locality name or PIN code (e.g., Alkapuri, 390007)..." 
+            class="directory-search-input"
+          />
+          <button *ngIf="searchQuery()" (click)="searchQuery.set('')" class="clear-btn" aria-label="Clear filter">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading()" class="loading-state">
+      <div class="spinner"></div>
+      <p>Loading Vadodara coverage directory...</p>
+    </div>
+
+    <!-- Areas Grid -->
+    <div *ngIf="!isLoading()" class="grid-3 areas-directory-grid">
+      <div 
+        *ngFor="let area of filteredAreas()" 
+        class="card locality-card"
+      >
+        <div class="locality-top">
+          <h3 class="locality-name">{{ area.localityName }}</h3>
+          <span class="pincode-pill" *ngIf="area.pincode">PIN {{ area.pincode }}</span>
+        </div>
+
+        <div class="locality-city">
+          <svg class="icon-xs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>{{ area.city }}, {{ area.state }}</span>
+        </div>
+
+        <p class="locality-notes" *ngIf="area.coverageNotes">
+          {{ area.coverageNotes }}
+        </p>
+
+        <div class="locality-status-row">
+          <span class="badge badge-verified">Active Service Zone</span>
+          <a 
+            routerLink="/contact" 
+            [queryParams]="{locality: area.localityName, pincode: area.pincode, tab: 'enquiry'}" 
+            class="enquire-link"
+          >
+            Enquire →
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty Filter Result -->
+    <div *ngIf="!isLoading() && filteredAreas().length === 0" class="empty-results card">
+      <div class="empty-icon">📍</div>
+      <h3>No exact locality match found for "{{ searchQuery() }}"</h3>
+      <p>We are continually expanding to newer residential societies across Vadodara.</p>
+      <a routerLink="/contact" [queryParams]="{locality: searchQuery(), tab: 'enquiry'}" class="btn btn-primary btn-sm">
+        Request Support in {{ searchQuery() }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Vadodara Expansion Callout -->
+<section class="section text-center">
+  <div class="container container-narrow">
+    <h2>Don't See Your Parents' Specific Vadodara Society?</h2>
+    <p class="section-description mt-1 mb-3">
+      If your parents reside in a newer township, outer ring road society, or gated community in Vadodara, send us an enquiry. We evaluate coordinator routes daily.
+    </p>
+    <a routerLink="/contact" [queryParams]="{tab: 'enquiry'}" class="btn btn-primary btn-lg">
+      Submit Locality Inquiry
+    </a>
+  </div>
+</section>

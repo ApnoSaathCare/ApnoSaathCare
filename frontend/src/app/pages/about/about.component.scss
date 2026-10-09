@@ -1,0 +1,104 @@
+.page-header {
+  padding-top: 4rem;
+  padding-bottom: 2.5rem;
+  text-align: center;
+  background-color: var(--secondary-surface);
+  border-bottom: 1px solid var(--secondary-border);
+
+  .page-title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .page-description {
+    font-size: 1.15rem;
+    max-width: 680px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+  }
+}
+
+.about-hero-card {
+  padding: 3rem 2.5rem;
+  background-color: #FFFFFF;
+  border-left: 4px solid var(--primary);
+
+  .narrative-heading {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .narrative-lead {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--text-main);
+    font-weight: 500;
+  }
+}
+
+.pillars-grid {
+  gap: 2rem;
+}
+
+.pillar-card {
+  padding: 2.25rem;
+
+  .pillar-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background-color: var(--primary-subtle);
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.65rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.vadodara-focus-card {
+  padding: 2.75rem 2.25rem;
+  text-align: center;
+
+  .focus-badge {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    max-width: 720px;
+    margin: 0 auto 1rem auto;
+  }
+}
+
+.cta-subtext {
+  color: #D3E8EB;
+  font-size: 1.15rem;
+}
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1.5rem; }
+.mb-3 { margin-bottom: 2rem; }
+.text-center { text-align: center; }

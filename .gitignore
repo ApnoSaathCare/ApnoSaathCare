@@ -1,0 +1,15 @@
+# Node modules
+node_modules/
+dist/
+.angular/
+data/*.sqlite*
+.env
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+.DS_Store

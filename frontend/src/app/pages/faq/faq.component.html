@@ -1,0 +1,113 @@
+<section class="page-header">
+  <div class="container">
+    <span class="section-subtitle">Help & Answers</span>
+    <h1 class="page-title">Frequently Asked Questions</h1>
+    <p class="page-description">
+      Transparent answers about our non-medical elder care support, visit scope, Vadodara coverage, and family updates.
+    </p>
+
+    <!-- Search & Filter Bar -->
+    <div class="faq-search-wrap">
+      <div class="search-input-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input 
+          type="text" 
+          [(ngModel)]="searchQuery" 
+          placeholder="Search questions (e.g. cost, overseas, medical, visits)..." 
+          class="faq-search-input"
+        />
+        <button *ngIf="searchQuery()" (click)="searchQuery.set('')" class="clear-btn" aria-label="Clear search">✕</button>
+      </div>
+
+      <div class="faq-categories-row">
+        <button 
+          type="button" 
+          class="cat-chip" 
+          [class.active]="selectedCategory() === 'all'"
+          (click)="setCategory('all')"
+        >
+          All Questions
+        </button>
+        <button 
+          type="button" 
+          class="cat-chip" 
+          [class.active]="selectedCategory() === 'general'"
+          (click)="setCategory('general')"
+        >
+          General & NRIs
+        </button>
+        <button 
+          type="button" 
+          class="cat-chip" 
+          [class.active]="selectedCategory() === 'visits'"
+          (click)="setCategory('visits')"
+        >
+          Home Visits
+        </button>
+        <button 
+          type="button" 
+          class="cat-chip" 
+          [class.active]="selectedCategory() === 'pricing'"
+          (click)="setCategory('pricing')"
+        >
+          Pricing & Billing
+        </button>
+        <button 
+          type="button" 
+          class="cat-chip" 
+          [class.active]="selectedCategory() === 'safety'"
+          (click)="setCategory('safety')"
+        >
+          Safety & Medical
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Accordion Section -->
+<section class="section">
+  <div class="container container-narrow">
+    <div class="faq-accordion-list">
+      <div 
+        *ngFor="let faq of filteredFaqs()" 
+        class="faq-item"
+        [class.open]="openFaqId() === faq.id"
+      >
+        <button 
+          type="button" 
+          class="faq-question" 
+          (click)="toggleFaq(faq.id)"
+          [attr.aria-expanded]="openFaqId() === faq.id"
+        >
+          <span class="q-text">{{ faq.question }}</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="faq-answer" *ngIf="openFaqId() === faq.id">
+          <p>{{ faq.answer }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredFaqs().length === 0" class="empty-faq-state card">
+      <p>No questions matched "{{ searchQuery() }}".</p>
+      <button (click)="searchQuery.set(''); selectedCategory.set('all')" class="btn btn-outline btn-sm">
+        Reset Search Filters
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section class="section section-bg-alt text-center">
+  <div class="container container-narrow">
+    <h2>Still Have a Question We Haven't Covered?</h2>
+    <p class="section-description mt-1 mb-3">
+      Our team in Vadodara is happy to answer any specific query about your family’s circumstances.
+    </p>
+    <a routerLink="/contact" [queryParams]="{tab: 'enquiry'}" class="btn btn-primary btn-lg">
+      Contact Our Coordination Team
+    </a>
+  </div>
+</section>

@@ -1,0 +1,96 @@
+<footer class="site-footer">
+  <div class="container footer-main">
+    <div class="footer-grid">
+      <!-- Col 1: Brand & Tagline -->
+      <div class="footer-col brand-col">
+        <div class="footer-brand">
+          <div class="brand-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="40" height="40" rx="10" fill="#0E6872"/>
+              <path d="M20 28C20 28 11 22.5 11 16.5C11 13.5 13.5 11 16.5 11C18.2 11 19.5 11.9 20 13C20.5 11.9 21.8 11 23.5 11C26.5 11 29 13.5 29 16.5C29 22.5 20 28 20 28Z" fill="#C86D51"/>
+            </svg>
+          </div>
+          <span class="brand-title">AapnoSaath <span class="brand-accent">Care</span></span>
+        </div>
+        <p class="tagline">Close to Your Parents. Wherever You Are.</p>
+        <p class="supporting-text">A Trusted Friend for Your Parents — coordinating compassionate, non-medical elder care check-ins and errand support in Vadodara, Gujarat.</p>
+        <div class="location-badge">
+          <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span>Operating in Vadodara, Gujarat, India</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Services & Links -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Services & Support</h4>
+        <ul class="footer-links">
+          <li><a routerLink="/services">Family Check-in Plan</a></li>
+          <li><a routerLink="/services">Regular Support Plan</a></li>
+          <li><a routerLink="/services">On-demand Errands</a></li>
+          <li><a routerLink="/how-it-works">How the Journey Works</a></li>
+          <li><a routerLink="/service-areas">Vadodara Service Areas</a></li>
+          <li><a routerLink="/contact" [queryParams]="{tab: 'consultation'}">Book a Free Consultation</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Company & Trust -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Trust & Company</h4>
+        <ul class="footer-links">
+          <li><a routerLink="/about-us">About AapnoSaath Care</a></li>
+          <li><a routerLink="/trust-safety">Trust & Safety Standards</a></li>
+          <li><a routerLink="/trust-safety" fragment="boundaries">Non-Medical Service Boundaries</a></li>
+          <li><a routerLink="/faqs">Frequently Asked Questions</a></li>
+          <li><a routerLink="/contact">Contact Support Team</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Contact & Pilot Notice -->
+      <div class="footer-col">
+        <h4 class="footer-heading">Vadodara Coordination</h4>
+        <div class="footer-contact-card">
+          <div class="contact-item">
+            <span class="contact-label">Phone Coordination:</span>
+            <a href="tel:+919876543210" class="contact-val">+91 98765 43210</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Enquiries:</span>
+            <a href="mailto:enquiries@aapnosaathcare.example.com" class="contact-val">enquiries&#64;aapnosaathcare.example.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Hours:</span>
+            <span class="contact-val">Mon – Sat: 9:00 AM – 6:30 PM IST</span>
+          </div>
+          <div class="pilot-notice-pill">
+            <span>Pilot Phase: Active in Vadodara</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Statutory Service Disclaimer -->
+    <div class="footer-disclaimer-box">
+      <div class="disclaimer-title">
+        <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        <span>Important Non-Medical Service Disclaimer</span>
+      </div>
+      <p class="disclaimer-text">
+        AapnoSaath Care provides non-medical assistance, social companionship, and family coordination. We do not provide clinical healthcare, medical diagnosis, nursing services, continuous monitoring, or emergency rescue. For medical emergencies in India, please contact emergency medical services (such as 108) or a registered healthcare facility immediately.
+      </p>
+    </div>
+
+    <!-- Bottom Legal Bar -->
+    <div class="footer-bottom">
+      <div class="copyright">
+        © {{ currentYear }} AapnoSaath Care. All rights reserved.
+      </div>
+      <div class="legal-links">
+        <a routerLink="/privacy-policy">Privacy Policy</a>
+        <span class="dot">•</span>
+        <a routerLink="/terms-of-service">Terms of Service</a>
+        <span class="dot">•</span>
+        <a routerLink="/disclaimer">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
