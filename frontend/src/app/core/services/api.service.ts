@@ -7,12 +7,13 @@ import { ServiceArea, ServiceAreaCheckResult } from '../models/service-area.mode
 import { EnquirySubmissionDto, EnquiryResponse } from '../models/enquiry.model';
 import { ConsultationSubmissionDto, ConsultationResponse } from '../models/consultation.model';
 import { PublicConfig } from '../models/public-config.model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  private readonly baseUrl = 'http://localhost:3000/api/v1';
+  private readonly baseUrl = environment.apiUrl;
 
   // Fallback Service Plans (Vadodara)
   private readonly fallbackPlans: ServicePlan[] = [

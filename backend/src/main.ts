@@ -30,9 +30,16 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1');
 
   // CORS Configuration
-  const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:4200';
+  const rawCorsOrigin = process.env.CORS_ORIGIN;
+  let originSetting: any = true;
+  if (rawCorsOrigin && rawCorsOrigin !== '*') {
+    originSetting = rawCorsOrigin.includes(',')
+      ? rawCorsOrigin.split(',').map((o) => o.trim())
+      : rawCorsOrigin;
+  }
+
   app.enableCors({
-    origin: corsOrigin.includes(',') ? corsOrigin.split(',') : corsOrigin,
+    origin: originSetting,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
   });

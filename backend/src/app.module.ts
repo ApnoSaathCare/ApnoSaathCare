@@ -39,16 +39,27 @@ import { runInitialSeeds } from './database/seeds/initial-seed';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: (config: ConfigService): any => {
-        const dbType = config.get<string>('DB_TYPE', 'sqlite');
+        const databaseUrl = config.get<string>('DATABASE_URL');
+        const dbType = config.get<string>('DB_TYPE', databaseUrl ? 'postgres' : 'sqlite');
 
-        if (dbType === 'postgres') {
+        if (dbType === 'postgres' || !!databaseUrl) {
+          const isSsl =
+            config.get<string>('DB_SSL') === 'true' ||
+            (!!databaseUrl && !databaseUrl.includes('localhost') && !databaseUrl.includes('127.0.0.1'));
+
           return {
             type: 'postgres',
-            host: config.get<string>('DB_HOST', 'localhost'),
-            port: config.get<number>('DB_PORT', 5432),
-            username: config.get<string>('DB_USERNAME', 'postgres'),
-            password: config.get<string>('DB_PASSWORD', 'postgres'),
-            database: config.get<string>('DB_DATABASE', 'aapnosaath_care'),
+            ...(databaseUrl
+              ? { url: databaseUrl }
+              : {
+                  host: config.get<string>('DB_HOST', 'localhost'),
+                  port: config.get<number>('DB_PORT', 5432),
+                  username: config.get<string>('DB_USERNAME', 'postgres'),
+                  password: config.get<string>('DB_PASSWORD', 'postgres'),
+                  database: config.get<string>('DB_DATABASE', 'aapnosaath_care'),
+                }),
+            ssl: isSsl ? { rejectUnauthorized: false } : false,
+            extra: isSsl ? { ssl: { rejectUnauthorized: false } } : {},
             entities: [ServicePlan, ServiceArea, Enquiry, ConsultationRequest],
             synchronize: config.get<boolean>('DB_SYNCHRONIZE', true),
             logging: config.get<boolean>('DB_LOGGING', false),
