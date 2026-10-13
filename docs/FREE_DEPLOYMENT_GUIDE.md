@@ -57,7 +57,7 @@ Render provides free hosting for Node.js / NestJS web services.
    - **Branch**: `main`
    - **Root Directory**: `backend`
    - **Runtime**: `Node`
-   - **Build Command**: `npm install && npm run build`
+   - **Build Command**: `npm install --include=dev && npm run build`
    - **Start Command**: `npm run start:prod`
    - **Instance Type**: `Free`
 5. Scroll down to **Environment Variables** and add:
