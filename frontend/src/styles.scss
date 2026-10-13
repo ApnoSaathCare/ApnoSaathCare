@@ -3,22 +3,27 @@
    ========================================================================== */
 
 :root {
-  /* Brand Palette */
-  --primary: #0A4D54;
-  --primary-dark: #052F34;
-  --primary-hover: #073B40;
-  --primary-light: #0E6872;
-  --primary-subtle: #EBF5F6;
-  --primary-border: #CBE3E6;
+  /* Brand Palette (Aligned with Two-Hands Heart Logo) */
+  --primary: #1C5662;
+  --primary-dark: #10363E;
+  --primary-hover: #15454F;
+  --primary-light: #287585;
+  --primary-subtle: #EBF5F4;
+  --primary-border: #C8E2DE;
 
-  --secondary: #F8FAF9;
-  --secondary-surface: #F1F6F5;
-  --secondary-border: #DDE8E7;
+  --mint: #6EB8A6;
+  --mint-dark: #24705F;
+  --mint-subtle: #E6F6F2;
+  --mint-border: #ACDED3;
 
-  --accent: #C85A32;
-  --accent-hover: #B24E29;
-  --accent-subtle: #FDF4F0;
-  --accent-border: #F7D5C8;
+  --secondary: #FAF8F5;
+  --secondary-surface: #F2F8F6;
+  --secondary-border: #DDEBE8;
+
+  --accent: #D96B43;
+  --accent-hover: #C25932;
+  --accent-subtle: #FDF3EE;
+  --accent-border: #F5D2C3;
 
   --success: #1E824C;
   --success-subtle: #E8F8F0;
@@ -28,15 +33,15 @@
   --info-subtle: #E0F2FE;
 
   /* Neutrals & Typography */
-  --text-main: #14282D;
-  --text-secondary: #425A62;
-  --text-muted: #6A828A;
+  --text-main: #132B30;
+  --text-secondary: #3E575E;
+  --text-muted: #6A838A;
   --text-inverse: #FFFFFF;
 
-  --bg-page: #F8FAF9;
+  --bg-page: #FAF8F5;
   --bg-card: #FFFFFF;
-  --border-light: #E2EBEB;
-  --border-card: rgba(10, 77, 84, 0.09);
+  --border-light: #E0EBE8;
+  --border-card: rgba(28, 86, 98, 0.08);
 
   /* Typography Families */
   --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -157,8 +162,93 @@ img {
   border-bottom: 1px solid var(--secondary-border);
 }
 
+.final-cta-section {
+  text-align: center;
+  background: linear-gradient(180deg, var(--bg-page) 0%, #EBF4F2 100%);
+  padding: 5rem 0 5.5rem 0;
+
+  .cta-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    border: 1.5px solid #D0E5E1;
+    border-radius: var(--radius-lg);
+    padding: 3.75rem 2.5rem;
+    box-shadow: 0 16px 40px rgba(28, 86, 98, 0.07);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1C5662 0%, #6EB8A6 100%);
+    }
+  }
+
+  .cta-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #174E58;
+    background-color: #E6F6F2;
+    border: 1px solid #ACDED3;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-headline {
+    color: var(--text-main);
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    margin-bottom: 1.15rem;
+    line-height: 1.2;
+  }
+
+  .cta-subtext {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 660px;
+    margin: 0 auto 2.25rem auto;
+  }
+
+  .cta-btn-group {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+
+    .btn-primary {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      border-radius: var(--radius-md);
+      background-color: var(--primary);
+      color: #FFFFFF !important;
+      box-shadow: 0 6px 20px rgba(28, 86, 98, 0.28);
+
+      &:hover {
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(28, 86, 98, 0.38);
+      }
+    }
+  }
+
+  .cta-note {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+}
+
 .section-bg-teal {
-  background: linear-gradient(135deg, #0A4D54 0%, #052F34 100%) !important;
+  background: linear-gradient(135deg, #1C5662 0%, #10363E 100%) !important;
   color: #FFFFFF !important;
 
   h1, h2, h3, h4 {

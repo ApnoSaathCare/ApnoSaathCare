@@ -15,7 +15,7 @@
       <div class="contact-info-panel">
         <div class="card info-card">
           <h2 class="panel-title">Vadodara Coordination Desk</h2>
-          <p class="panel-subtitle">Our team is active Monday through Saturday to discuss your family's needs.</p>
+          <p class="panel-subtitle">Our team is active Monday through Sunday to discuss your family's needs.</p>
 
           <div class="contact-channels">
             <div class="channel-item">
@@ -24,8 +24,8 @@
               </div>
               <div class="channel-details">
                 <span class="channel-label">Direct Phone & WhatsApp:</span>
-                <a href="tel:+919876543210" class="channel-val">+91 98765 43210</a>
-                <span class="channel-sub">Mon – Sat: 9:00 AM – 6:30 PM IST</span>
+                <a href="tel:+919876543210" class="channel-val">+91 8780791723</a>
+                <span class="channel-sub">Mon – Sun: 9:00 AM – 7:00 PM IST</span>
               </div>
             </div>
 
@@ -35,8 +35,8 @@
               </div>
               <div class="channel-details">
                 <span class="channel-label">Email Enquiries:</span>
-                <a href="mailto:enquiries@aapnosaathcare.example.com" class="channel-val">enquiries&#64;aapnosaathcare.example.com</a>
-                <span class="channel-sub">Responses within 24 business hours</span>
+                <a href="mailto:enquiriesataapnosaathcare@gmail.com" class="channel-val">enquiries&#64;aapnosaathcare.com</a>
+                <span class="channel-sub">Responses within 48 business hours</span>
               </div>
             </div>
 
@@ -67,32 +67,34 @@
       <!-- Right Column: Interactive Tabbed Form Panel -->
       <div class="contact-form-panel">
         <div class="card form-container-card">
-          <!-- Form Tabs -->
-          <div class="form-tabs-header">
-            <button 
-              type="button" 
-              class="form-tab-btn" 
-              [class.active]="activeTab() === 'enquiry'"
-              (click)="setTab('enquiry')"
-              id="tab-enquiry-btn"
-            >
-              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
-              <span>1. Submit an Enquiry</span>
-            </button>
-            <button 
-              type="button" 
-              class="form-tab-btn" 
-              [class.active]="activeTab() === 'consultation'"
-              (click)="setTab('consultation')"
-              id="tab-consultation-btn"
-            >
-              <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span>2. Request Consultation Call</span>
-            </button>
+          <!-- Modern Pill Segmented Tabs -->
+          <div class="form-tabs-container">
+            <div class="form-tabs-pill">
+              <button 
+                type="button" 
+                class="form-tab-btn" 
+                [class.active]="activeTab() === 'enquiry'"
+                (click)="setTab('enquiry')"
+                id="tab-enquiry-btn"
+              >
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                <span>1. Submit Service Enquiry</span>
+              </button>
+              <button 
+                type="button" 
+                class="form-tab-btn" 
+                [class.active]="activeTab() === 'consultation'"
+                (click)="setTab('consultation')"
+                id="tab-consultation-btn"
+              >
+                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                <span>2. Request Consultation Call</span>
+              </button>
+            </div>
           </div>
 
           <!-- TAB 1: ENQUIRY FORM -->
-          <div *ngIf="activeTab() === 'enquiry'">
+          <div *ngIf="activeTab() === 'enquiry'" class="tab-content-wrap">
             <!-- Success Confirmation Screen -->
             <div *ngIf="enquirySuccess()" class="submission-success-card animate-fade-in">
               <div class="success-icon">
@@ -109,9 +111,9 @@
               <div class="next-steps-list">
                 <h4>What Happens Next:</h4>
                 <ol>
-                  <li>Our Vadodara team reviews your parent's locality and support requirements.</li>
-                  <li>We connect with you via your preferred contact method within 24 hours.</li>
-                  <li>We discuss scheduling and service arrangement without any upfront obligation.</li>
+                  <li>Our Vadodara coordination desk reviews your parent's locality and support requirements.</li>
+                  <li>We connect with you via your preferred contact method within 24 business hours.</li>
+                  <li>We discuss scheduling and visit arrangement without any upfront obligation.</li>
                 </ol>
               </div>
 
@@ -123,8 +125,8 @@
             <!-- Enquiry Input Form -->
             <form *ngIf="!enquirySuccess()" [formGroup]="enquiryForm" (ngSubmit)="submitEnquiry()" id="enquiry-form" class="reactive-form">
               <div class="form-intro">
-                <h3>Tell Us About Your Family's Requirements</h3>
-                <p>Fill out the details below. We do not collect medical records or sensitive banking information.</p>
+                <h2 class="form-title">Tell Us About Your Family's Requirements</h2>
+                <p class="form-subtitle">Fill out the details below. We do not collect medical records or sensitive banking information.</p>
               </div>
 
               <!-- Alert error if any -->
@@ -135,104 +137,119 @@
               <!-- Honeypot -->
               <input type="text" formControlName="botHoneypot" class="bot-honeypot" tabindex="-1" autocomplete="off" />
 
-              <div class="grid-2 form-row-grid">
-                <div class="form-group">
-                  <label class="form-label" for="enq-fullName">Your Full Name <span class="required">*</span></label>
-                  <input 
-                    type="text" 
-                    id="enq-fullName" 
-                    formControlName="fullName" 
-                    class="form-control" 
-                    [class.is-invalid]="enquiryForm.get('fullName')?.touched && enquiryForm.get('fullName')?.invalid"
-                    placeholder="e.g. Rahul Desai"
-                  />
-                  <span class="form-error-msg" *ngIf="enquiryForm.get('fullName')?.touched && enquiryForm.get('fullName')?.invalid">
-                    Please provide your full name (minimum 2 characters).
-                  </span>
+              <!-- Section 1: Contact Details -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <span class="section-step">Step 1</span>
+                  <span class="section-name">Your Contact Information</span>
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="enq-email">Your Email Address <span class="required">*</span></label>
-                  <input 
-                    type="email" 
-                    id="enq-email" 
-                    formControlName="email" 
-                    class="form-control" 
-                    [class.is-invalid]="enquiryForm.get('email')?.touched && enquiryForm.get('email')?.invalid"
-                    placeholder="e.g. rahul.desai@example.com"
-                  />
-                  <span class="form-error-msg" *ngIf="enquiryForm.get('email')?.touched && enquiryForm.get('email')?.invalid">
-                    Please provide a valid email address.
-                  </span>
-                </div>
-              </div>
+                <div class="grid-2 form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="enq-fullName">Your Full Name <span class="required">*</span></label>
+                    <input 
+                      type="text" 
+                      id="enq-fullName" 
+                      formControlName="fullName" 
+                      class="form-control" 
+                      [class.is-invalid]="enquiryForm.get('fullName')?.touched && enquiryForm.get('fullName')?.invalid"
+                      placeholder="e.g. Rahul Desai"
+                    />
+                    <span class="form-error-msg" *ngIf="enquiryForm.get('fullName')?.touched && enquiryForm.get('fullName')?.invalid">
+                      Please provide your full name (minimum 2 characters).
+                    </span>
+                  </div>
 
-              <div class="grid-2 form-row-grid">
-                <div class="form-group">
-                  <label class="form-label" for="enq-phone">Phone Number (with Country Code) <span class="required">*</span></label>
-                  <input 
-                    type="tel" 
-                    id="enq-phone" 
-                    formControlName="phone" 
-                    class="form-control" 
-                    [class.is-invalid]="enquiryForm.get('phone')?.touched && enquiryForm.get('phone')?.invalid"
-                    placeholder="e.g. +91 98765 43210 or +1 415 555 2671"
-                  />
-                  <span class="form-error-msg" *ngIf="enquiryForm.get('phone')?.touched && enquiryForm.get('phone')?.invalid">
-                    Valid contact number is required.
-                  </span>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="enq-rel">Relationship to Parent <span class="required">*</span></label>
-                  <select 
-                    id="enq-rel" 
-                    formControlName="relationshipToParent" 
-                    class="form-select"
-                    [class.is-invalid]="enquiryForm.get('relationshipToParent')?.touched && enquiryForm.get('relationshipToParent')?.invalid"
-                  >
-                    <option value="" disabled>Select relationship</option>
-                    <option *ngFor="let r of relationships" [value]="r">{{ r }}</option>
-                  </select>
-                  <span class="form-error-msg" *ngIf="enquiryForm.get('relationshipToParent')?.touched && enquiryForm.get('relationshipToParent')?.invalid">
-                    Please select your relationship.
-                  </span>
-                </div>
-              </div>
-
-              <div class="grid-2 form-row-grid">
-                <div class="form-group">
-                  <label class="form-label" for="enq-loc">Parent's Locality in Vadodara <span class="required">*</span></label>
-                  <input 
-                    type="text" 
-                    id="enq-loc" 
-                    formControlName="parentLocality" 
-                    class="form-control" 
-                    [class.is-invalid]="enquiryForm.get('parentLocality')?.touched && enquiryForm.get('parentLocality')?.invalid"
-                    placeholder="e.g. Alkapuri, Gotri, Manjalpur, Akota"
-                  />
-                  <span class="form-error-msg" *ngIf="enquiryForm.get('parentLocality')?.touched && enquiryForm.get('parentLocality')?.invalid">
-                    Parent's locality in Vadodara is required.
-                  </span>
+                  <div class="form-group">
+                    <label class="form-label" for="enq-email">Your Email Address <span class="required">*</span></label>
+                    <input 
+                      type="email" 
+                      id="enq-email" 
+                      formControlName="email" 
+                      class="form-control" 
+                      [class.is-invalid]="enquiryForm.get('email')?.touched && enquiryForm.get('email')?.invalid"
+                      placeholder="e.g. rahul.desai@example.com"
+                    />
+                    <span class="form-error-msg" *ngIf="enquiryForm.get('email')?.touched && enquiryForm.get('email')?.invalid">
+                      Please provide a valid email address.
+                    </span>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="enq-pin">Vadodara PIN Code <span class="form-helper-inline">(Optional)</span></label>
-                  <input 
-                    type="text" 
-                    id="enq-pin" 
-                    formControlName="parentPincode" 
-                    class="form-control" 
-                    placeholder="e.g. 390007"
-                    maxlength="6"
-                  />
+                <div class="grid-2 form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="enq-phone">Phone Number (with Country Code) <span class="required">*</span></label>
+                    <input 
+                      type="tel" 
+                      id="enq-phone" 
+                      formControlName="phone" 
+                      class="form-control" 
+                      [class.is-invalid]="enquiryForm.get('phone')?.touched && enquiryForm.get('phone')?.invalid"
+                      placeholder="e.g. +91 98765 43210 or +1 415 555 2671"
+                    />
+                    <span class="form-error-msg" *ngIf="enquiryForm.get('phone')?.touched && enquiryForm.get('phone')?.invalid">
+                      Valid contact number is required.
+                    </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="enq-rel">Relationship to Parent <span class="required">*</span></label>
+                    <select 
+                      id="enq-rel" 
+                      formControlName="relationshipToParent" 
+                      class="form-select"
+                      [class.is-invalid]="enquiryForm.get('relationshipToParent')?.touched && enquiryForm.get('relationshipToParent')?.invalid"
+                    >
+                      <option value="" disabled>Select your relationship</option>
+                      <option *ngFor="let r of relationships" [value]="r">{{ r }}</option>
+                    </select>
+                    <span class="form-error-msg" *ngIf="enquiryForm.get('relationshipToParent')?.touched && enquiryForm.get('relationshipToParent')?.invalid">
+                      Please select your relationship.
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <div class="grid-2 form-row-grid">
+              <!-- Section 2: Location & Service Plan -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <span class="section-step">Step 2</span>
+                  <span class="section-name">Parent's Location & Service Requirement</span>
+                </div>
+
+                <div class="grid-location form-row-grid">
+                  <div class="form-group locality-group">
+                    <label class="form-label" for="enq-loc">Parent's Locality in Vadodara <span class="required">*</span></label>
+                    <input 
+                      type="text" 
+                      id="enq-loc" 
+                      formControlName="parentLocality" 
+                      class="form-control" 
+                      [class.is-invalid]="enquiryForm.get('parentLocality')?.touched && enquiryForm.get('parentLocality')?.invalid"
+                      placeholder="e.g. Alkapuri, Gotri, Manjalpur, Akota, Karelibaug"
+                    />
+                    <span class="form-error-msg" *ngIf="enquiryForm.get('parentLocality')?.touched && enquiryForm.get('parentLocality')?.invalid">
+                      Parent's locality in Vadodara is required.
+                    </span>
+                  </div>
+
+                  <div class="form-group pincode-group">
+                    <label class="form-label" for="enq-pin">PIN Code <span class="form-helper-inline">(Optional)</span></label>
+                    <input 
+                      type="text" 
+                      id="enq-pin" 
+                      formControlName="parentPincode" 
+                      class="form-control" 
+                      placeholder="e.g. 390007"
+                      maxlength="6"
+                    />
+                  </div>
+                </div>
+
+                <!-- Full Width Service Plan of Interest for clean, unclipped display -->
                 <div class="form-group">
                   <label class="form-label" for="enq-service">Service Plan of Interest <span class="required">*</span></label>
-                  <select id="enq-service" formControlName="serviceOfInterest" class="form-select">
+                  <select id="enq-service" formControlName="serviceOfInterest" class="form-select form-select-lg">
                     <option *ngFor="let s of servicesList" [value]="s.value">{{ s.label }}</option>
                   </select>
                 </div>
@@ -240,42 +257,52 @@
                 <div class="form-group">
                   <label class="form-label" for="enq-method">Preferred Contact Method</label>
                   <select id="enq-method" formControlName="preferredContactMethod" class="form-select">
-                    <option value="PHONE">Phone Call</option>
-                    <option value="WHATSAPP">WhatsApp</option>
+                    <option value="PHONE">Direct Phone Call</option>
+                    <option value="WHATSAPP">WhatsApp Message / Call</option>
                     <option value="EMAIL">Email</option>
                   </select>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="form-label" for="enq-msg">Additional Details or Preferences <span class="form-helper-inline">(Optional)</span></label>
-                <textarea 
-                  id="enq-msg" 
-                  formControlName="message" 
-                  rows="3" 
-                  class="form-textarea"
-                  placeholder="Share any routine preferences, language comfort (Gujarati/Hindi/English), or errand needs..."
-                  maxlength="1000"
-                ></textarea>
-                <span class="form-helper">Maximum 1,000 characters. Please do not submit medical histories or identity numbers.</span>
-              </div>
+              <!-- Section 3: Notes & Consent -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <span class="section-step">Step 3</span>
+                  <span class="section-name">Preferences & Consent</span>
+                </div>
 
-              <!-- Consent Checkbox -->
-              <div class="form-check">
-                <input 
-                  type="checkbox" 
-                  id="enq-consent" 
-                  formControlName="contactConsent" 
-                  class="form-check-input"
-                  [class.is-invalid]="enquiryForm.get('contactConsent')?.touched && enquiryForm.get('contactConsent')?.invalid"
-                />
-                <label for="enq-consent" class="form-check-label">
-                  I agree to be contacted by AapnoSaath Care regarding this non-medical elder care enquiry. I understand that submitting this form does not confirm an active booking until requirements and schedule are mutually agreed. <span class="required">*</span>
-                </label>
+                <div class="form-group">
+                  <label class="form-label" for="enq-msg">Additional Details or Preferences <span class="form-helper-inline">(Optional)</span></label>
+                  <textarea 
+                    id="enq-msg" 
+                    formControlName="message" 
+                    rows="3" 
+                    class="form-textarea"
+                    placeholder="Share any routine preferences, language comfort (Gujarati/Hindi/English), or errand needs..."
+                    maxlength="1000"
+                  ></textarea>
+                  <span class="form-helper">Maximum 1,000 characters. Please do not submit medical histories or identity numbers.</span>
+                </div>
+
+                <!-- Consent Card -->
+                <div class="consent-card">
+                  <div class="form-check">
+                    <input 
+                      type="checkbox" 
+                      id="enq-consent" 
+                      formControlName="contactConsent" 
+                      class="form-check-input"
+                      [class.is-invalid]="enquiryForm.get('contactConsent')?.touched && enquiryForm.get('contactConsent')?.invalid"
+                    />
+                    <label for="enq-consent" class="form-check-label">
+                      I agree to be contacted by AapnoSaath Care regarding this non-medical elder care enquiry. I understand that submitting this form does not confirm an active booking until requirements and schedule are mutually agreed. <span class="required">*</span>
+                    </label>
+                  </div>
+                  <span class="form-error-msg" *ngIf="enquiryForm.get('contactConsent')?.touched && enquiryForm.get('contactConsent')?.invalid">
+                    Your consent is required to submit an enquiry.
+                  </span>
+                </div>
               </div>
-              <span class="form-error-msg" *ngIf="enquiryForm.get('contactConsent')?.touched && enquiryForm.get('contactConsent')?.invalid">
-                Your consent is required to submit an enquiry.
-              </span>
 
               <div class="form-submit-row">
                 <button 
@@ -287,12 +314,16 @@
                   <span *ngIf="!isSubmittingEnquiry()">Submit Service Enquiry</span>
                   <span *ngIf="isSubmittingEnquiry()">Submitting Enquiry...</span>
                 </button>
+                <p class="form-privacy-note">
+                  <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>We respect your privacy. No medical records or banking data requested.</span>
+                </p>
               </div>
             </form>
           </div>
 
           <!-- TAB 2: CONSULTATION REQUEST FORM -->
-          <div *ngIf="activeTab() === 'consultation'">
+          <div *ngIf="activeTab() === 'consultation'" class="tab-content-wrap">
             <!-- Consultation Success Card -->
             <div *ngIf="consultationSuccess()" class="submission-success-card animate-fade-in">
               <div class="success-icon">
@@ -323,8 +354,8 @@
             <!-- Consultation Input Form -->
             <form *ngIf="!consultationSuccess()" [formGroup]="consultationForm" (ngSubmit)="submitConsultation()" id="consultation-form" class="reactive-form">
               <div class="form-intro">
-                <h3>Request a Free 1-on-1 Consultation Call</h3>
-                <p>Discuss your parent’s situation in Vadodara with our local coordination specialist.</p>
+                <h2 class="form-title">Request a Free 1-on-1 Consultation Call</h2>
+                <p class="form-subtitle">Discuss your parent’s situation in Vadodara with our local coordination specialist.</p>
               </div>
 
               <div *ngIf="consultationError()" class="alert-error-banner">
@@ -334,117 +365,133 @@
               <!-- Honeypot -->
               <input type="text" formControlName="botHoneypot" class="bot-honeypot" tabindex="-1" autocomplete="off" />
 
-              <div class="grid-2 form-row-grid">
-                <div class="form-group">
-                  <label class="form-label" for="con-name">Your Full Name <span class="required">*</span></label>
-                  <input 
-                    type="text" 
-                    id="con-name" 
-                    formControlName="fullName" 
-                    class="form-control"
-                    [class.is-invalid]="consultationForm.get('fullName')?.touched && consultationForm.get('fullName')?.invalid"
-                    placeholder="e.g. Ananya Patel"
-                  />
-                  <span class="form-error-msg" *ngIf="consultationForm.get('fullName')?.touched && consultationForm.get('fullName')?.invalid">
-                    Full name is required.
-                  </span>
+              <!-- Section 1: Contact Details -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <span class="section-step">Step 1</span>
+                  <span class="section-name">Your Information</span>
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="con-email">Email Address <span class="required">*</span></label>
-                  <input 
-                    type="email" 
-                    id="con-email" 
-                    formControlName="email" 
-                    class="form-control"
-                    [class.is-invalid]="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
-                    placeholder="e.g. ananya.patel@example.com"
-                  />
-                  <span class="form-error-msg" *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid">
-                    Valid email address is required.
-                  </span>
-                </div>
-              </div>
+                <div class="grid-2 form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="con-name">Your Full Name <span class="required">*</span></label>
+                    <input 
+                      type="text" 
+                      id="con-name" 
+                      formControlName="fullName" 
+                      class="form-control" 
+                      [class.is-invalid]="consultationForm.get('fullName')?.touched && consultationForm.get('fullName')?.invalid"
+                      placeholder="e.g. Ananya Patel"
+                    />
+                    <span class="form-error-msg" *ngIf="consultationForm.get('fullName')?.touched && consultationForm.get('fullName')?.invalid">
+                      Full name is required.
+                    </span>
+                  </div>
 
-              <div class="grid-2 form-row-grid">
-                <div class="form-group">
-                  <label class="form-label" for="con-phone">Phone Number (with Country Code) <span class="required">*</span></label>
-                  <input 
-                    type="tel" 
-                    id="con-phone" 
-                    formControlName="phone" 
-                    class="form-control"
-                    [class.is-invalid]="consultationForm.get('phone')?.touched && consultationForm.get('phone')?.invalid"
-                    placeholder="e.g. +91 91234 56789 or +44 7911 123456"
-                  />
-                  <span class="form-error-msg" *ngIf="consultationForm.get('phone')?.touched && consultationForm.get('phone')?.invalid">
-                    Phone number is required.
-                  </span>
-                </div>
-
-                <div class="form-group">
-                  <label class="form-label" for="con-method">Preferred Consultation Channel <span class="required">*</span></label>
-                  <select id="con-method" formControlName="consultationMethod" class="form-select">
-                    <option value="PHONE">Direct Phone Call</option>
-                    <option value="WHATSAPP_CALL">WhatsApp Audio/Video Call</option>
-                    <option value="VIDEO_CALL">Online Video Meeting (Google Meet / Zoom)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="grid-2 form-row-grid">
-                <div class="form-group">
-                  <label class="form-label" for="con-date">Preferred Date <span class="required">*</span></label>
-                  <input 
-                    type="date" 
-                    id="con-date" 
-                    formControlName="preferredDate" 
-                    class="form-control"
-                    [class.is-invalid]="consultationForm.get('preferredDate')?.touched && consultationForm.get('preferredDate')?.invalid"
-                  />
-                  <span class="form-error-msg" *ngIf="consultationForm.get('preferredDate')?.touched && consultationForm.get('preferredDate')?.invalid">
-                    Please select a preferred date.
-                  </span>
+                  <div class="form-group">
+                    <label class="form-label" for="con-email">Email Address <span class="required">*</span></label>
+                    <input 
+                      type="email" 
+                      id="con-email" 
+                      formControlName="email" 
+                      class="form-control" 
+                      [class.is-invalid]="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid"
+                      placeholder="e.g. ananya.patel@example.com"
+                    />
+                    <span class="form-error-msg" *ngIf="consultationForm.get('email')?.touched && consultationForm.get('email')?.invalid">
+                      Valid email address is required.
+                    </span>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label class="form-label" for="con-window">Preferred Time Window <span class="required">*</span></label>
-                  <select 
-                    id="con-window" 
-                    formControlName="preferredTimeWindow" 
-                    class="form-select"
-                    [class.is-invalid]="consultationForm.get('preferredTimeWindow')?.touched && consultationForm.get('preferredTimeWindow')?.invalid"
-                  >
-                    <option value="" disabled>Select time window</option>
-                    <option *ngFor="let tw of timeWindows" [value]="tw">{{ tw }}</option>
-                  </select>
-                  <span class="form-error-msg" *ngIf="consultationForm.get('preferredTimeWindow')?.touched && consultationForm.get('preferredTimeWindow')?.invalid">
-                    Please select a time window.
-                  </span>
+                <div class="grid-2 form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="con-phone">Phone Number (with Country Code) <span class="required">*</span></label>
+                    <input 
+                      type="tel" 
+                      id="con-phone" 
+                      formControlName="phone" 
+                      class="form-control" 
+                      [class.is-invalid]="consultationForm.get('phone')?.touched && consultationForm.get('phone')?.invalid"
+                      placeholder="e.g. +91 91234 56789 or +44 7911 123456"
+                    />
+                    <span class="form-error-msg" *ngIf="consultationForm.get('phone')?.touched && consultationForm.get('phone')?.invalid">
+                      Phone number is required.
+                    </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="con-method">Preferred Call Channel <span class="required">*</span></label>
+                    <select id="con-method" formControlName="consultationMethod" class="form-select">
+                      <option value="PHONE">Direct Phone Call</option>
+                      <option value="WHATSAPP_CALL">WhatsApp Audio/Video Call</option>
+                      <option value="VIDEO_CALL">Online Video Meeting (Google Meet / Zoom)</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
-              <div class="form-group">
-                <label class="form-label" for="con-notes">Brief Overview of Parent's Needs <span class="form-helper-inline">(Optional)</span></label>
-                <textarea 
-                  id="con-notes" 
-                  formControlName="supportRequirements" 
-                  rows="3" 
-                  class="form-textarea"
-                  placeholder="e.g. Father lives alone in Gotri, looking for weekly check-ins and bank/errand assistance."
-                  maxlength="1000"
-                ></textarea>
-              </div>
+              <!-- Section 2: Date & Window -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <span class="section-step">Step 2</span>
+                  <span class="section-name">Schedule Preferences</span>
+                </div>
 
-              <div class="consultation-notice">
-                <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                <span>Submitting this request does not automatically confirm an appointment. Our team will review availability and confirm your scheduled slot via phone or WhatsApp.</span>
+                <div class="grid-2 form-row-grid">
+                  <div class="form-group">
+                    <label class="form-label" for="con-date">Preferred Date <span class="required">*</span></label>
+                    <input 
+                      type="date" 
+                      id="con-date" 
+                      formControlName="preferredDate" 
+                      class="form-control" 
+                      [class.is-invalid]="consultationForm.get('preferredDate')?.touched && consultationForm.get('preferredDate')?.invalid"
+                    />
+                    <span class="form-error-msg" *ngIf="consultationForm.get('preferredDate')?.touched && consultationForm.get('preferredDate')?.invalid">
+                      Please select a preferred date.
+                    </span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="con-window">Preferred Time Window <span class="required">*</span></label>
+                    <select 
+                      id="con-window" 
+                      formControlName="preferredTimeWindow" 
+                      class="form-select"
+                      [class.is-invalid]="consultationForm.get('preferredTimeWindow')?.touched && consultationForm.get('preferredTimeWindow')?.invalid"
+                    >
+                      <option value="" disabled>Select time window</option>
+                      <option *ngFor="let tw of timeWindows" [value]="tw">{{ tw }}</option>
+                    </select>
+                    <span class="form-error-msg" *ngIf="consultationForm.get('preferredTimeWindow')?.touched && consultationForm.get('preferredTimeWindow')?.invalid">
+                      Please select a time window.
+                    </span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="con-notes">Brief Overview of Parent's Needs <span class="form-helper-inline">(Optional)</span></label>
+                  <textarea 
+                    id="con-notes" 
+                    formControlName="supportRequirements" 
+                    rows="3" 
+                    class="form-textarea"
+                    placeholder="e.g. Father lives alone in Gotri, looking for weekly check-ins and errand assistance."
+                    maxlength="1000"
+                  ></textarea>
+                </div>
+
+                <div class="consultation-notice">
+                  <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                  <span>Submitting this request does not automatically confirm an appointment. Our team will review availability and confirm your scheduled slot via phone or WhatsApp.</span>
+                </div>
               </div>
 
               <div class="form-submit-row">
                 <button 
                   type="submit" 
-                  class="btn btn-accent btn-lg btn-block" 
+                  class="btn btn-primary btn-lg btn-block" 
                   [disabled]="isSubmittingConsultation()"
                   id="submit-consultation-btn"
                 >

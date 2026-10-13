@@ -1,0 +1,47 @@
+<svg viewBox="0 0 240 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left Hand (Deep Teal / Slate Ocean) -->
+  <g id="left-hand">
+    <path d="M112.5 142.5C108 138 91 123 75.5 102C63 85 61 67.5 72.5 54C81 44 96.5 45.5 107.5 56.5C113 62 115.5 72.5 113.5 79.5C110 84 104 81 99.5 75C95 68.5 85 68 81.5 77C77.5 87 90.5 106.5 104 122.5C108.5 128 111.5 132.5 112.5 142.5Z" fill="#356673"/>
+    <!-- Finger separation cuts on left hand -->
+    <path d="M89 125L99.5 136" stroke="#FAF8F5" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+    <path d="M82 113L91.5 123" stroke="#FAF8F5" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+  </g>
+
+  <!-- Right Hand (Soft Mint / Sage Teal) -->
+  <g id="right-hand">
+    <path d="M127.5 142.5C132 138 149 123 164.5 102C177 85 179 67.5 167.5 54C159 44 143.5 45.5 132.5 56.5C127 62 124.5 72.5 126.5 79.5C130 84 136 81 140.5 75C145 68.5 155 68 158.5 77C162.5 87 149.5 106.5 136 122.5C131.5 128 128.5 132.5 127.5 142.5Z" fill="#70B9A7"/>
+    <!-- Finger separation cuts on right hand -->
+    <path d="M151 125L140.5 136" stroke="#FAF8F5" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+    <path d="M158 113L148.5 123" stroke="#FAF8F5" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+  </g>
+
+  <!-- Left Accent Sparkles & Dots -->
+  <g id="left-accents" fill="#356673">
+    <!-- Star Cross -->
+    <path d="M37 77H47M42 72V82" stroke="#356673" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Swoosh Arc -->
+    <path d="M30 96C32 99 33 102 33 105" stroke="#356673" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Large Dot -->
+    <circle cx="43" cy="108" r="4"/>
+    <!-- Medium & Small Dots -->
+    <circle cx="50" cy="116" r="2.8"/>
+    <circle cx="34" cy="111" r="2"/>
+    <circle cx="41" cy="122" r="1.8"/>
+    <circle cx="53" cy="101" r="2.2"/>
+  </g>
+
+  <!-- Right Accent Sparkles & Dots -->
+  <g id="right-accents" fill="#70B9A7">
+    <!-- Star Cross -->
+    <path d="M198 107H208M203 102V112" stroke="#70B9A7" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Swoosh Arc -->
+    <path d="M211 75C209 72 208 69 208 66" stroke="#70B9A7" stroke-width="2.2" stroke-linecap="round"/>
+    <!-- Large Dot -->
+    <circle cx="197" cy="80" r="4"/>
+    <!-- Medium & Small Dots -->
+    <circle cx="190" cy="72" r="2.8"/>
+    <circle cx="206" cy="77" r="2"/>
+    <circle cx="199" cy="66" r="1.8"/>
+    <circle cx="187" cy="87" r="2.2"/>
+  </g>
+</svg>

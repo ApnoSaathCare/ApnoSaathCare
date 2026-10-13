@@ -71,7 +71,7 @@ export class FaqComponent implements OnInit {
       category: 'pricing',
       question: 'How much does the service cost?',
       answer:
-        'Our proposed pilot pricing plans start at ₹1,499/month for Family Check-in (2 visits) and ₹2,999/month for Regular Support (4 visits). On-demand errands range between ₹299–₹699 per task depending on time and distance. Third-party expenses and transport are quoted separately.',
+        'Our proposed pilot pricing plans start at ₹999/month for Family Check-in (2 visits) and ₹1,499/month for Regular Support (4 visits). On-demand errands range between ₹199–₹499 per task depending on time and distance. Third-party expenses and transport are quoted separately.',
     },
     {
       id: 'faq-8',

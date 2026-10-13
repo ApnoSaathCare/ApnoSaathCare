@@ -11,5 +11,7 @@ npm-debug.log*
 
 # IDE
 .vscode/
+.vs/
 .idea/
 .DS_Store
+*.tsbuildinfo

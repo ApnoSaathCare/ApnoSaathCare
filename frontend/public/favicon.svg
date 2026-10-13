@@ -1,0 +1,25 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Subtle circular / soft rounded background for crisp browser tab visibility -->
+  <rect width="100" height="100" rx="24" fill="#FBF8F3"/>
+  
+  <!-- Left Hand (Deep Teal) -->
+  <g id="favicon-left">
+    <path d="M46.5 76C44 73 33.5 63 24 50C16 39.5 15 28.5 22 20C27.5 13.5 37.5 14.5 44.5 21.5C48 25 49.5 31.5 48.5 36C46 39 42.5 37 39.5 33C36.5 29 30.5 28.5 28 34C25.5 40 33.5 52.5 42 63C44.5 66.5 46 69.5 46.5 76Z" fill="#2E6973"/>
+    <path d="M33 65L39 72" stroke="#FBF8F3" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M28 57L34 64" stroke="#FBF8F3" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Right Hand (Soft Mint / Sage Teal) -->
+  <g id="favicon-right">
+    <path d="M53.5 76C56 73 66.5 63 76 50C84 39.5 85 28.5 78 20C72.5 13.5 62.5 14.5 55.5 21.5C52 25 50.5 31.5 51.5 36C54 39 57.5 37 60.5 33C63.5 29 69.5 28.5 72 34C74.5 40 66.5 52.5 58 63C55.5 66.5 54 69.5 53.5 76Z" fill="#71BBA8"/>
+    <path d="M67 65L61 72" stroke="#FBF8F3" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M72 57L66 64" stroke="#FBF8F3" stroke-width="1.8" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sparkle Accents -->
+  <path d="M12 36H18M15 33V39" stroke="#2E6973" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="15" cy="54" r="2.2" fill="#2E6973"/>
+  
+  <path d="M82 58H88M85 55V61" stroke="#71BBA8" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="85" cy="40" r="2.2" fill="#71BBA8"/>
+</svg>

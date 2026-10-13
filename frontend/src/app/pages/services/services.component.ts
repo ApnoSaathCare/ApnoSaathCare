@@ -24,7 +24,7 @@ export class ServicesComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'Services & Transparent Pricing',
-      'Clear, honest non-medical elder care plans in Vadodara: Family Check-in (₹1,499/mo), Regular Support (₹2,999/mo), and On-demand Errands (₹299–₹699/task).',
+      'Clear, honest non-medical elder care plans in Vadodara: Family Check-in (₹999/mo), Regular Support (₹1,499/mo), and On-demand Errands (₹299–₹699/task).',
     );
 
     this.apiService.getServices().subscribe({

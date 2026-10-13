@@ -43,9 +43,9 @@ export class ContactComponent implements OnInit {
 
   // Plans of interest
   servicesList = [
-    { value: 'family-check-in', label: 'Family Check-in Plan (2 visits/mo - ₹1,499)' },
-    { value: 'regular-support', label: 'Regular Support Plan (4 visits/mo - ₹2,999)' },
-    { value: 'on-demand-errands', label: 'On-demand Errands (₹299–₹699/task)' },
+    { value: 'family-check-in', label: 'Family Check-in Plan (2 visits/mo - ₹999)' },
+    { value: 'regular-support', label: 'Regular Support Plan (4 visits/mo - ₹1,499)' },
+    { value: 'on-demand-errands', label: 'On-demand Errands (₹199–₹499/task)' },
     { value: 'general-inquiry', label: 'General / Custom Requirement' },
   ];
 
