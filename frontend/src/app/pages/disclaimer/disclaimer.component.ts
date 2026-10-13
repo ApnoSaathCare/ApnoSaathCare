@@ -17,8 +17,8 @@ export class DisclaimerComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
-      'Non-Medical Service Disclaimer',
-      'Non-medical elder care service disclaimer for AapnoSaath Care Vadodara, Gujarat. Explaining non-clinical scope and emergency procedures.',
+      'Service Scope & Care Boundaries Disclaimer',
+      'Service scope and care boundaries disclaimer for AapnoSaath Care Vadodara, Gujarat. Explaining hospital accompaniment and clinical boundaries.',
     );
   }
 }

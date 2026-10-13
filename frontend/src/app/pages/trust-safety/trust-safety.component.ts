@@ -16,7 +16,7 @@ export class TrustSafetyComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'Trust & Safety Standards',
-      'Learn about AapnoSaath Care’s verification standards, non-medical service boundaries, consent protocols, and safety measures for elderly parents in Vadodara.',
+      'Learn about AapnoSaath Care’s verification standards, hospital accompaniment protocols, care boundaries, and safety measures for elderly parents in Vadodara.',
     );
   }
 }

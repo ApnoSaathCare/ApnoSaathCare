@@ -17,7 +17,7 @@ This document outlines key operational, legal, and business decisions that must 
 
 3. **Field Provider Verification Policy**:
    - Exact vetting protocols (police verification, background checks, Aadhaar verification, reference validation).
-   - Training curriculum on non-medical boundaries, empathy, privacy, and elder communication.
+   - Training curriculum on hospital accompaniment safety, care boundaries, empathy, privacy, and elder communication.
 
 4. **Service Scope & Boundary Enforcement**:
    - Standard Operating Procedure (SOP) for medical emergencies encountered during visits (e.g. protocol for contacting family contacts and 108 Emergency Ambulance service).
@@ -34,5 +34,5 @@ This document outlines key operational, legal, and business decisions that must 
 - [ ] Connect production PostgreSQL instance (AWS RDS, Supabase, Neon, or self-hosted).
 - [ ] Implement email/SMS notification integration (e.g., SendGrid, AWS SES, Twilio, Msg91) on submission of enquiries and consultation requests.
 - [ ] Configure production HTTPS and SSL certificates with automated renewal.
-- [ ] Conduct formal legal review of Draft Privacy Policy, Terms of Service, and Non-Medical Disclaimer.
+- [ ] Conduct formal legal review of Draft Privacy Policy, Terms of Service, and Service Scope & Care Boundaries Disclaimer.
 - [ ] Connect custom domain and configure DNS records (SPF, DKIM, DMARC for email deliverables).

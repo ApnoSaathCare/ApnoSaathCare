@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
   previewFaqs = [
     {
       q: 'Who can use AapnoSaath Care?',
-      a: 'Families looking for local, non-medical support for elderly parents living in Vadodara can submit an enquiry. Service suitability and availability will be confirmed individually before any arrangement is confirmed.',
+      a: 'Families looking for local elder care support, hospital visit accompaniment, and errand assistance for elderly parents in Vadodara can submit an enquiry. Service suitability and availability will be confirmed individually before any arrangement is confirmed.',
     },
     {
       q: 'Can I arrange support if I live outside India or in another city?',
@@ -29,11 +29,11 @@ export class HomeComponent implements OnInit {
     },
     {
       q: 'What happens during a home visit?',
-      a: 'A visit follows the agreed scope and duration (up to 30 minutes for standard check-ins). It includes a friendly conversation, a general comfort and wellbeing check, and assistance with agreed practical tasks. It is strictly non-medical.',
+      a: 'A visit follows the agreed scope and duration (up to 60 minutes for standard check-ins). It includes a friendly conversation, a general comfort and wellbeing check, and assistance with agreed practical tasks or appointment planning. It provides personal companion and daily living support.',
     },
     {
-      q: 'Do you provide emergency or medical services?',
-      a: 'No. AapnoSaath Care is strictly a non-medical support and family coordination service. We do not provide doctor visits, nursing, continuous medical monitoring, or emergency response services.',
+      q: 'Do you provide hospital accompaniment and emergency services?',
+      a: 'We gladly accompany elderly parents to hospital visits and doctor appointments — assisting with transport logistics, clinic waiting, and medicine pickups. However, our coordinators do not perform clinical medical procedures, nursing care, or emergency ambulance rescue; medical treatments remain with qualified healthcare professionals.',
     },
   ];
 
@@ -45,7 +45,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'Home',
-      'Close to Your Parents. Wherever You Are. Non-medical elder care check-ins, errand assistance, and family coordination in Vadodara, Gujarat.',
+      'Close to Your Parents. Wherever You Are. Elder care check-ins, hospital visit accompaniment, errand assistance, and family coordination in Vadodara, Gujarat.',
     );
 
     this.apiService.getServices().subscribe((data) => {

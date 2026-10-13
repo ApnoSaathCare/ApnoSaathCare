@@ -24,7 +24,7 @@ VALUES
     'sp-002',
     'Regular Support',
     'regular-support',
-    'Comprehensive non-medical assistance for weekly presence, errand support, and continuous family peace of mind.',
+    'Comprehensive companion assistance for weekly presence, hospital visit accompaniment, and continuous family peace of mind.',
     2999.00,
     'INR',
     'per month',
@@ -61,7 +61,7 @@ VALUES
 ('sa-009', 'Subhanpura', '390023', 'Vadodara', 'Gujarat', true, 'Active service area with regular visit scheduling.'),
 ('sa-010', 'Sama', '390024', 'Vadodara', 'Gujarat', true, 'Active service zone for check-ins and errand assistance.'),
 ('sa-011', 'Ellora Park', '390023', 'Vadodara', 'Gujarat', true, 'Core coverage zone with standard scheduling availability.'),
-('sa-012', 'Nizampura', '390002', 'Vadodara', 'Gujarat', true, 'Active service area for non-medical elder care visits.'),
+('sa-012', 'Nizampura', '390002', 'Vadodara', 'Gujarat', true, 'Active service area for elder care and hospital accompaniment visits.'),
 ('sa-013', 'Waghodia Road', '390019', 'Vadodara', 'Gujarat', true, 'Active service zone with confirmed routing availability.'),
 ('sa-014', 'Gorwa', '390016', 'Vadodara', 'Gujarat', true, 'Active service area with regular visit scheduling.'),
 ('sa-015', 'Tandalja', '390012', 'Vadodara', 'Gujarat', true, 'Active service area with standard availability.'),
@@ -69,4 +69,4 @@ VALUES
 ('sa-017', 'Harni Road', '390022', 'Vadodara', 'Gujarat', true, 'Active service area with regular visit coverage.'),
 ('sa-018', 'Makarpura', '390014', 'Vadodara', 'Gujarat', true, 'Active service zone for scheduled check-in plans.'),
 ('sa-019', 'Atladara', '390012', 'Vadodara', 'Gujarat', true, 'Active service zone for scheduled check-in plans.'),
-('sa-020', 'Sevasi', '391101', 'Vadodara', 'Gujarat', true, 'Pilot expansion area; schedule confirmed on enquiry.');
+('sa-020', 'Sevasi', '391101', 'Vadodara', 'Gujarat', true, 'Expanding coverage area; schedule confirmed on enquiry.');

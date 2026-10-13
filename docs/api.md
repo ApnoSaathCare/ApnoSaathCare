@@ -54,7 +54,7 @@ Interactive Swagger Documentation: `http://localhost:3000/api/docs`
   "supportPhone": "+91 98765 43210",
   "privacyNoticeVersion": "v1.0",
   "termsVersion": "v1.0",
-  "disclaimer": "AapnoSaath Care provides non-medical elder care assistance and family coordination. We do not provide medical, nursing, or emergency services."
+  "disclaimer": "AapnoSaath Care provides elder care assistance, hospital appointment accompaniment, and family coordination. We do not provide clinical medical procedures, nursing care, or emergency ambulance rescue."
 }
 ```
 
@@ -84,7 +84,7 @@ Interactive Swagger Documentation: `http://localhost:3000/api/docs`
       "Emergency medical response"
     ],
     "displayOrder": 1,
-    "isPilotPricing": true
+    "isPilotPricing": false
   }
 ]
 ```

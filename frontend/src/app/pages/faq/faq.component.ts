@@ -29,7 +29,7 @@ export class FaqComponent implements OnInit {
       category: 'general',
       question: 'Who can use AapnoSaath Care?',
       answer:
-        'Families looking for local, non-medical support for elderly parents living in Vadodara can submit an enquiry. Service suitability, coordinator matching, and schedule availability will be confirmed individually before any service plan begins.',
+        'Families looking for local elder care support, hospital appointment accompaniment, and daily living assistance for elderly parents in Vadodara can submit an enquiry. Service suitability, coordinator matching, and schedule availability will be confirmed individually before any service plan begins.',
     },
     {
       id: 'faq-2',
@@ -43,7 +43,7 @@ export class FaqComponent implements OnInit {
       category: 'visits',
       question: 'What happens during a home visit?',
       answer:
-        'A visit strictly follows the agreed scope and duration (up to 30 minutes for standard check-ins). It may include a warm conversation over tea, checking general comfort and wellbeing, and assisting with agreed practical tasks (e.g., organizing calendar reminders, light errand review). It is not a medical examination.',
+        'A visit strictly follows the agreed scope and duration (up to 60 minutes for standard check-ins). It may include a warm conversation over tea, checking general comfort and wellbeing, and assisting with agreed practical tasks (e.g., organizing calendar reminders, light errand review). It is not a medical examination.',
     },
     {
       id: 'faq-4',
@@ -55,9 +55,9 @@ export class FaqComponent implements OnInit {
     {
       id: 'faq-5',
       category: 'safety',
-      question: 'Do you provide medical or emergency services?',
+      question: 'Can you take my parents to hospital appointments or doctor visits?',
       answer:
-        'No. The service is non-medical and does not replace healthcare professionals, nurses, doctors, or emergency rescue services. In medical emergencies, emergency medical services (such as dialing 108 in India) must be contacted directly.',
+        'Yes! We actively provide door-to-door hospital visit accompaniment and doctor appointment support. Our coordinators help arrange transport, accompany your parents to the clinic, wait with them comfortably during consultations, and pick up prescribed medicines. However, our coordinators do not perform clinical nursing procedures or provide emergency ambulance rescue; medical treatments remain under the care of certified doctors.',
     },
     {
       id: 'faq-6',
@@ -71,14 +71,14 @@ export class FaqComponent implements OnInit {
       category: 'pricing',
       question: 'How much does the service cost?',
       answer:
-        'Our proposed pilot pricing plans start at ₹999/month for Family Check-in (2 visits) and ₹1,499/month for Regular Support (4 visits). On-demand errands range between ₹199–₹499 per task depending on time and distance. Third-party expenses and transport are quoted separately.',
+        'Our plans start at ₹699/month for Family Check-in (2 visits) and ₹1,199/month for Regular Support (4 visits). On-demand errands start at ₹399 per task depending on time and distance. Third-party expenses and transport are quoted separately.',
     },
     {
       id: 'faq-8',
       category: 'booking',
       question: 'Can I cancel or change a booking?',
       answer:
-        'Visits may be rescheduled with at least 24 hours advance notice. Our final commercial cancellation policy is currently under pilot confirmation and will be provided in writing before confirming service activation.',
+        'Visits may be rescheduled with at least 24 hours advance notice. Our cancellation terms and rescheduling options are provided clearly in writing before confirming service activation.',
     },
     {
       id: 'faq-9',
@@ -108,7 +108,7 @@ export class FaqComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'Frequently Asked Questions',
-      'Common questions and answers regarding non-medical elder care check-ins, errand assistance, pricing, and safety standards in Vadodara.',
+      'Common questions and answers regarding elder care check-ins, hospital appointment accompaniment, errand assistance, pricing, and safety standards in Vadodara.',
     );
   }
 

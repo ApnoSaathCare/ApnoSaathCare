@@ -38,7 +38,7 @@ export class ServiceAreasComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'Vadodara Service Areas',
-      'Check non-medical elder care service coverage across Vadodara localities including Alkapuri, Akota, Gotri, Manjalpur, Fatehgunj, Karelibaug, and more.',
+      'Check elder care and hospital appointment accompaniment coverage across Vadodara localities including Alkapuri, Akota, Gotri, Manjalpur, Fatehgunj, Karelibaug, and more.',
     );
 
     this.apiService.getServiceAreas().subscribe({

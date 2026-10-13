@@ -7,7 +7,7 @@ import { Title, Meta } from '@angular/platform-browser';
 export class SeoService {
   private readonly defaultTitle = 'AapnoSaath Care — Close to Your Parents. Wherever You Are.';
   private readonly defaultDescription =
-    'Non-medical elder-care support and family-coordination service in Vadodara, Gujarat. Scheduled check-ins, errands, appointment accompaniment, and consent-based family updates.';
+    'Elder care support, hospital appointment accompaniment, and family-coordination service in Vadodara, Gujarat. Scheduled check-ins, errands, hospital visit escort, and consent-based family updates.';
 
   constructor(
     private readonly titleService: Title,

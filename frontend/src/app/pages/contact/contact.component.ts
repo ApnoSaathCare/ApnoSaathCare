@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ApiService } from '../../core/services/api.service';
 import { SeoService } from '../../core/services/seo.service';
@@ -43,11 +43,22 @@ export class ContactComponent implements OnInit {
 
   // Plans of interest
   servicesList = [
-    { value: 'family-check-in', label: 'Family Check-in Plan (2 visits/mo - ₹999)' },
-    { value: 'regular-support', label: 'Regular Support Plan (4 visits/mo - ₹1,499)' },
-    { value: 'on-demand-errands', label: 'On-demand Errands (₹199–₹499/task)' },
+    { value: 'family-check-in', label: 'Family Check-in Plan (2 visits/mo - ₹699)' },
+    { value: 'regular-support', label: 'Regular Support Plan (4 visits/mo - ₹1,199)' },
+    { value: 'on-demand-errands', label: 'On-demand Errands (₹399/task)' },
     { value: 'general-inquiry', label: 'General / Custom Requirement' },
   ];
+
+  // Minimum selectable date (today in local YYYY-MM-DD format)
+  readonly minDate = this.getTodayDateString();
+
+  private getTodayDateString(): string {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 
   constructor(
     private readonly fb: FormBuilder,
@@ -59,7 +70,7 @@ export class ContactComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'Contact Us & Enquiries',
-      'Contact AapnoSaath Care or request a free consultation call for non-medical elder care support for parents living in Vadodara, Gujarat.',
+      'Contact AapnoSaath Care or request a free consultation call for elder care support and hospital appointment accompaniment for parents living in Vadodara, Gujarat.',
     );
 
     this.initForms();
@@ -90,8 +101,16 @@ export class ContactComponent implements OnInit {
     this.consultationForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(120)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
-      phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(30)]],
-      preferredDate: ['', [Validators.required]],
+      preferredDate: [
+        '',
+        [
+          Validators.required,
+          (control: AbstractControl) => {
+            if (!control.value) return null;
+            return control.value < this.minDate ? { pastDate: true } : null;
+          },
+        ],
+      ],
       preferredTimeWindow: ['', [Validators.required]],
       consultationMethod: ['PHONE', [Validators.required]],
       supportRequirements: ['', [Validators.maxLength(1000)]],

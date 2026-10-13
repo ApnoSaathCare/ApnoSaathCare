@@ -41,9 +41,9 @@ export class PublicConfigService {
         'v1.0',
       ),
       termsVersion: this.configService.get<string>('PUBLIC_TERMS_VERSION', 'v1.0'),
-      isPilotPricing: true,
+      isPilotPricing: false,
       disclaimer:
-        'AapnoSaath Care provides non-medical elder care support and family coordination. We do not provide clinical, medical, nursing, continuous monitoring, or emergency response services.',
+        'AapnoSaath Care provides elder care assistance, hospital appointment accompaniment, and family coordination. We do not provide clinical medical procedures, nursing treatments, continuous monitoring, or emergency response services.',
     };
   }
 }

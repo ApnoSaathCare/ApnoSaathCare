@@ -14,7 +14,7 @@ describe('PublicConfigService', () => {
     expect(config.orgName).toBe('AapnoSaath Care');
     expect(config.serviceCity).toBe('Vadodara');
     expect(config.tagline).toBe('Close to Your Parents. Wherever You Are.');
-    expect(config.isPilotPricing).toBe(true);
-    expect(config.disclaimer).toContain('non-medical');
+    expect(config.isPilotPricing).toBe(false);
+    expect(config.disclaimer).toContain('hospital appointment accompaniment');
   });
 });

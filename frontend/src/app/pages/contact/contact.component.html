@@ -52,13 +52,13 @@
             </div>
           </div>
 
-          <div class="non-medical-reminder-box">
+          <div class="scope-reminder-box">
             <div class="reminder-header">
               <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-              <span>Non-Medical Service Scope</span>
+              <span>Service Scope & Care Boundaries</span>
             </div>
             <p>
-              Please note that AapnoSaath Care is a non-medical support and family coordination service. We do not provide clinical medical diagnosis, nursing, or emergency ambulance rescue.
+              AapnoSaath Care provides companion support, hospital appointment accompaniment, and daily living assistance. We do not provide clinical medical procedures, nursing care, or emergency ambulance rescue.
             </p>
           </div>
         </div>
@@ -153,7 +153,7 @@
                       formControlName="fullName" 
                       class="form-control" 
                       [class.is-invalid]="enquiryForm.get('fullName')?.touched && enquiryForm.get('fullName')?.invalid"
-                      placeholder="e.g. Rahul Desai"
+                      placeholder="e.g. Manoj Patel"
                     />
                     <span class="form-error-msg" *ngIf="enquiryForm.get('fullName')?.touched && enquiryForm.get('fullName')?.invalid">
                       Please provide your full name (minimum 2 characters).
@@ -185,7 +185,7 @@
                       formControlName="phone" 
                       class="form-control" 
                       [class.is-invalid]="enquiryForm.get('phone')?.touched && enquiryForm.get('phone')?.invalid"
-                      placeholder="e.g. +91 98765 43210 or +1 415 555 2671"
+                      placeholder="e.g. +91 98765 43210"
                     />
                     <span class="form-error-msg" *ngIf="enquiryForm.get('phone')?.touched && enquiryForm.get('phone')?.invalid">
                       Valid contact number is required.
@@ -295,7 +295,7 @@
                       [class.is-invalid]="enquiryForm.get('contactConsent')?.touched && enquiryForm.get('contactConsent')?.invalid"
                     />
                     <label for="enq-consent" class="form-check-label">
-                      I agree to be contacted by AapnoSaath Care regarding this non-medical elder care enquiry. I understand that submitting this form does not confirm an active booking until requirements and schedule are mutually agreed. <span class="required">*</span>
+                      I agree to be contacted by AapnoSaath Care regarding this elder care enquiry. I understand that submitting this form does not confirm an active booking until requirements and schedule are mutually agreed. <span class="required">*</span>
                     </label>
                   </div>
                   <span class="form-error-msg" *ngIf="enquiryForm.get('contactConsent')?.touched && enquiryForm.get('contactConsent')?.invalid">
@@ -413,7 +413,7 @@
                       formControlName="phone" 
                       class="form-control" 
                       [class.is-invalid]="consultationForm.get('phone')?.touched && consultationForm.get('phone')?.invalid"
-                      placeholder="e.g. +91 91234 56789 or +44 7911 123456"
+                      placeholder="e.g. +91 91234 56789"
                     />
                     <span class="form-error-msg" *ngIf="consultationForm.get('phone')?.touched && consultationForm.get('phone')?.invalid">
                       Phone number is required.
@@ -446,10 +446,12 @@
                       id="con-date" 
                       formControlName="preferredDate" 
                       class="form-control" 
+                      [min]="minDate"
                       [class.is-invalid]="consultationForm.get('preferredDate')?.touched && consultationForm.get('preferredDate')?.invalid"
                     />
                     <span class="form-error-msg" *ngIf="consultationForm.get('preferredDate')?.touched && consultationForm.get('preferredDate')?.invalid">
-                      Please select a preferred date.
+                      <span *ngIf="consultationForm.get('preferredDate')?.hasError('required')">Please select a preferred date.</span>
+                      <span *ngIf="consultationForm.get('preferredDate')?.hasError('pastDate')">Date cannot be in the past. Please select today or a future date.</span>
                     </span>
                   </div>
 

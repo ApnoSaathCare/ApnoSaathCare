@@ -16,7 +16,7 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'About Us',
-      'Learn about AapnoSaath Care — our mission, non-medical service philosophy, and commitment to elder dignity and family transparency in Vadodara.',
+      'Learn about AapnoSaath Care — our mission, everyday care & hospital accompaniment philosophy, and commitment to elder dignity and family transparency in Vadodara.',
     );
   }
 }

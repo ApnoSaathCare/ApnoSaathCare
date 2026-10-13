@@ -9,17 +9,17 @@ A professional, responsive public web platform for **AapnoSaath Care** — an el
 
 ## 🌟 Overview
 
-AapnoSaath Care helps adult children living in other cities or countries arrange trusted, non-medical support for elderly parents living in Vadodara. The service facilitates scheduled home check-ins, everyday errands, appointment coordination, and consent-based family updates with upfront transparency, dignity, and care.
+AapnoSaath Care helps adult children living in other cities or countries arrange trusted elder care support, hospital visit accompaniment, and daily assistance for elderly parents living in Vadodara. The service facilitates scheduled home check-ins, hospital appointment accompaniment, everyday errands, and consent-based family updates with upfront transparency, dignity, and care.
 
 ### Core Features (Phase 1 — Public Website)
-- **Home Landing**: Hero, Problem statement, Service preview, How it works, Pilot pricing preview, Vadodara service-area checker, FAQs, and Consultation CTA.
-- **Services & Transparent Pricing**: In-depth plan breakdowns (Family Check-in ₹1,499/mo, Regular Support ₹2,999/mo, On-demand Errands ₹299–₹699/task) with full inclusions, exclusions, and pre-filled enquiry redirection.
-- **How It Works**: 5-step transparent workflow explaining service requests, non-medical assessment, custom proposals, verified visits, and family reporting.
+- **Home Landing**: Hero, Problem statement, Service preview, How it works, Transparent pricing preview, Vadodara service-area checker, FAQs, and Consultation CTA.
+- **Services & Transparent Pricing**: In-depth plan breakdowns (Family Check-in ₹999/mo, Regular Support ₹1,499/mo, On-demand Errands ₹199–₹499/task) with full inclusions, exclusions, and pre-filled enquiry redirection.
+- **How It Works**: 5-step transparent workflow explaining service requests, needs discovery, custom proposals, verified visits, and family reporting.
 - **Vadodara Service-Area Checker**: Interactive database-backed search supporting Vadodara localities and PIN codes with 3 coverage states (Available, Needs Confirmation, Not Listed).
-- **About Us & Trust / Safety**: Transparent disclosure of non-medical service boundaries, verification procedures, elder consent, dignity, and incident reporting.
+- **About Us & Trust / Safety**: Transparent disclosure of service scope & care boundaries, verification procedures, elder consent, dignity, and incident reporting.
 - **Frequently Asked Questions**: Accessible accordion with comprehensive categorized answers.
 - **Enquiry & Consultation Booking**: Angular Reactive Forms with client-side & server-side validation, anti-spam protection, unique reference generation (`ASC-ENQ-XXXXXX` / `ASC-CON-XXXXXX`), and status tracking.
-- **Legal Drafts**: Privacy Policy, Terms of Service, and Non-Medical Disclaimer.
+- **Legal Drafts**: Privacy Policy, Terms of Service, and Service Scope & Care Boundaries Disclaimer.
 
 ---
 
@@ -109,4 +109,4 @@ aapnosaath-care/
 
 ## 📄 License & Disclaimer
 
-AapnoSaath Care provides non-medical elder care assistance and family coordination. It does not provide medical treatment, diagnosis, continuous supervision, or emergency response services.
+AapnoSaath Care provides elder care assistance, hospital appointment accompaniment, and family coordination. It does not provide clinical medical treatment, diagnosis, continuous supervision, or emergency ambulance response services.

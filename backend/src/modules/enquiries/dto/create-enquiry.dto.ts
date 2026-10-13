@@ -87,7 +87,7 @@ export class CreateEnquiryDto {
   @MaxLength(60)
   preferredTimeWindow?: string;
 
-  @ApiPropertyOptional({ description: 'Additional brief non-medical notes or context', example: 'Looking for weekly check-ins and errand assistance.' })
+  @ApiPropertyOptional({ description: 'Additional brief care notes or context', example: 'Looking for weekly check-ins, hospital visit accompaniment, and errand assistance.' })
   @IsOptional()
   @IsString()
   @MaxLength(1000, { message: 'Message cannot exceed 1000 characters' })

@@ -9,7 +9,7 @@ export class ServicePlansController {
   constructor(private readonly servicePlansService: ServicePlansService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Retrieve all published service plans and pilot pricing' })
+  @ApiOperation({ summary: 'Retrieve all published service plans and pricing' })
   @ApiResponse({ status: 200, description: 'List of active service plans' })
   async getAllPlans(): Promise<ServicePlan[]> {
     return this.servicePlansService.findAllPublished();

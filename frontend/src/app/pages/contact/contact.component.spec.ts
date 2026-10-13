@@ -26,7 +26,7 @@ describe('ContactComponent', () => {
     expect(component.enquiryForm.valid).toBeFalsy();
 
     component.enquiryForm.patchValue({
-      fullName: 'Rahul Desai',
+      fullName: 'Manoj Patel',
       email: 'rahul@example.com',
       phone: '+91 98765 43210',
       relationshipToParent: 'Son',
@@ -45,11 +45,20 @@ describe('ContactComponent', () => {
       fullName: 'Ananya Patel',
       email: 'ananya@example.com',
       phone: '+91 91234 56789',
-      preferredDate: '2026-10-20',
+      preferredDate: component.minDate,
       preferredTimeWindow: 'Morning (9:00 AM - 12:00 PM IST)',
       consultationMethod: 'PHONE',
     });
 
     expect(component.consultationForm.valid).toBeTruthy();
+  });
+
+  it('should invalidate past date for consultation preferredDate', () => {
+    component.consultationForm.get('preferredDate')?.setValue('2020-01-01');
+    expect(component.consultationForm.get('preferredDate')?.hasError('pastDate')).toBe(true);
+    expect(component.consultationForm.get('preferredDate')?.valid).toBe(false);
+
+    component.consultationForm.get('preferredDate')?.setValue(component.minDate);
+    expect(component.consultationForm.get('preferredDate')?.valid).toBe(true);
   });
 });

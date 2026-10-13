@@ -16,7 +16,7 @@ export class HowItWorksComponent implements OnInit {
   ngOnInit(): void {
     this.seoService.updateTitleAndMeta(
       'How It Works',
-      'Learn how AapnoSaath Care coordinates non-medical elder care check-ins and errand support in Vadodara across 5 transparent stages.',
+      'Learn how AapnoSaath Care coordinates elder care check-ins, hospital visit accompaniment, and errand support in Vadodara across 5 transparent stages.',
     );
   }
 }

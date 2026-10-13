@@ -14,7 +14,7 @@ import { PublicConfig } from '../models/public-config.model';
 export class ApiService {
   private readonly baseUrl = 'http://localhost:3000/api/v1';
 
-  // Fallback Service Plans (Vadodara Pilot)
+  // Fallback Service Plans (Vadodara)
   private readonly fallbackPlans: ServicePlan[] = [
     {
       id: 'sp-001',
@@ -22,12 +22,12 @@ export class ApiService {
       slug: 'family-check-in',
       shortDescription:
         'Ideal for families wanting regular, gentle reassurance and thoughtful check-ins for parents living independently.',
-      priceAmount: 1499.0,
+      priceAmount: 1199.0,
       currencyCode: 'INR',
       billingPeriod: 'per month',
       inclusions: [
         '2 scheduled home visits per month',
-        'Up to 30 minutes per visit',
+        'Up to 60 minutes per visit',
         'Brief visit summary after each completed visit (subject to consent)',
         'Basic coordination with nominated family contact',
         'Wellbeing & comfort check',
@@ -46,13 +46,13 @@ export class ApiService {
       name: 'Regular Support',
       slug: 'regular-support',
       shortDescription:
-        'Comprehensive non-medical assistance for weekly presence, errand support, and continuous family peace of mind.',
+        'Comprehensive companion assistance for weekly presence, hospital visit accompaniment, and continuous family peace of mind.',
       priceAmount: 2999.0,
       currencyCode: 'INR',
       billingPeriod: 'per month',
       inclusions: [
         '4 scheduled home visits per month (weekly)',
-        'Up to 30 minutes per visit',
+        'Up to 60 minutes per visit',
         'Detailed visit summaries for the nominated family contact',
         'Assistance coordinating agreed everyday support needs',
         'Appointment escort & reminder support',
@@ -106,9 +106,9 @@ export class ApiService {
     supportPhone: '+91 8780791723',
     privacyNoticeVersion: 'v1.0',
     termsVersion: 'v1.0',
-    isPilotPricing: true,
+    isPilotPricing: false,
     disclaimer:
-      'AapnoSaath Care provides non-medical elder care support and family coordination. We do not provide clinical, medical, nursing, continuous monitoring, or emergency response services.',
+      'AapnoSaath Care provides elder care assistance, hospital appointment accompaniment, and family coordination. We do not provide clinical medical procedures, nursing treatments, continuous monitoring, or emergency response services.',
   };
 
   constructor(private readonly http: HttpClient) {}
@@ -149,7 +149,7 @@ export class ApiService {
           { id: 'sa-009', localityName: 'Subhanpura', pincode: '390023', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service area with regular visit scheduling.' },
           { id: 'sa-010', localityName: 'Sama', pincode: '390024', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service zone for check-ins and errand assistance.' },
           { id: 'sa-011', localityName: 'Ellora Park', pincode: '390023', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Core coverage zone with standard scheduling availability.' },
-          { id: 'sa-012', localityName: 'Nizampura', pincode: '390002', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service area for non-medical elder care visits.' },
+          { id: 'sa-012', localityName: 'Nizampura', pincode: '390002', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service area for elder care and hospital accompaniment visits.' },
           { id: 'sa-013', localityName: 'Waghodia Road', pincode: '390019', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service zone with confirmed routing availability.' },
           { id: 'sa-014', localityName: 'Gorwa', pincode: '390016', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service area with regular visit scheduling.' },
           { id: 'sa-015', localityName: 'Tandalja', pincode: '390012', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service area with standard availability.' },
@@ -157,7 +157,7 @@ export class ApiService {
           { id: 'sa-017', localityName: 'Harni Road', pincode: '390022', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service area with regular visit coverage.' },
           { id: 'sa-018', localityName: 'Makarpura', pincode: '390014', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service zone for scheduled check-in plans.' },
           { id: 'sa-019', localityName: 'Atladara', pincode: '390012', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Active service zone for scheduled check-in plans.' },
-          { id: 'sa-020', localityName: 'Sevasi', pincode: '391101', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Pilot expansion area; schedule confirmed on enquiry.' },
+          { id: 'sa-020', localityName: 'Sevasi', pincode: '391101', city: 'Vadodara', state: 'Gujarat', isActive: true, coverageNotes: 'Expanding coverage area; schedule confirmed on enquiry.' },
         ];
         return of(localAreas);
       }),
