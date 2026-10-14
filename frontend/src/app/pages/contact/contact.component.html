@@ -35,7 +35,7 @@
               </div>
               <div class="channel-details">
                 <span class="channel-label">Email Enquiries:</span>
-                <a href="mailto:enquiriesataapnosaathcare@gmail.com" class="channel-val">enquiries&#64;aapnosaathcare.com</a>
+                <a href="mailto:enquiriesataapnosaathcare@gmail.com" class="channel-val">enquiriesataapnosaathcare@gmail.com</a>
                 <span class="channel-sub">Responses within 48 business hours</span>
               </div>
             </div>
@@ -416,7 +416,9 @@
                       placeholder="e.g. +91 91234 56789"
                     />
                     <span class="form-error-msg" *ngIf="consultationForm.get('phone')?.touched && consultationForm.get('phone')?.invalid">
-                      Phone number is required.
+                      <span *ngIf="consultationForm.get('phone')?.hasError('required')">Phone number is required.</span>
+                      <span *ngIf="consultationForm.get('phone')?.hasError('minlength')">Phone number must be at least 7 digits.</span>
+                      <span *ngIf="consultationForm.get('phone')?.hasError('maxlength')">Phone number cannot exceed 30 characters.</span>
                     </span>
                   </div>
 

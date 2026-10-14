@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ServicePlan } from '../models/service-plan.model';
 import { ServiceArea, ServiceAreaCheckResult } from '../models/service-area.model';
@@ -23,7 +23,7 @@ export class ApiService {
       slug: 'family-check-in',
       shortDescription:
         'Ideal for families wanting regular, gentle reassurance and thoughtful check-ins for parents living independently.',
-      priceAmount: 1199.0,
+      priceAmount: 499.0,
       currencyCode: 'INR',
       billingPeriod: 'per month',
       inclusions: [
@@ -76,7 +76,7 @@ export class ApiService {
         'Flexible, task-based assistance for essential errands, bill payments, grocery pickups, and local coordination.',
       priceAmount: 299.0,
       currencyCode: 'INR',
-      billingPeriod: 'per task (₹299–₹699)',
+      billingPeriod: 'per task (₹299)',
       inclusions: [
         'Transparent quote based on task distance, time, and complexity',
         'Bill payment assistance & local errand runs',
@@ -208,7 +208,10 @@ export class ApiService {
 
   submitEnquiry(dto: EnquirySubmissionDto): Observable<EnquiryResponse> {
     return this.http.post<EnquiryResponse>(`${this.baseUrl}/enquiries`, dto).pipe(
-      catchError(() => {
+      catchError((err) => {
+        if (err?.status >= 400 && err?.status < 500) {
+          return throwError(() => err);
+        }
         const randomNum = Math.floor(100000 + Math.random() * 900000);
         return of({
           success: true,
@@ -223,7 +226,10 @@ export class ApiService {
 
   submitConsultation(dto: ConsultationSubmissionDto): Observable<ConsultationResponse> {
     return this.http.post<ConsultationResponse>(`${this.baseUrl}/consultation-requests`, dto).pipe(
-      catchError(() => {
+      catchError((err) => {
+        if (err?.status >= 400 && err?.status < 500) {
+          return throwError(() => err);
+        }
         const randomNum = Math.floor(100000 + Math.random() * 900000);
         return of({
           success: true,

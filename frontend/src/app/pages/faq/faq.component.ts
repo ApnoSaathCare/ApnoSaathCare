@@ -71,7 +71,7 @@ export class FaqComponent implements OnInit {
       category: 'pricing',
       question: 'How much does the service cost?',
       answer:
-        'Our plans start at ₹699/month for Family Check-in (2 visits) and ₹1,199/month for Regular Support (4 visits). On-demand errands start at ₹399 per task depending on time and distance. Third-party expenses and transport are quoted separately.',
+        'Our plans start at ₹499/month for Family Check-in (2 visits) and ₹899/month for Regular Support (4 visits). On-demand errands start at ₹299 per task depending on time and distance. Third-party expenses and transport are quoted separately.',
     },
     {
       id: 'faq-8',

@@ -43,9 +43,9 @@ export class ContactComponent implements OnInit {
 
   // Plans of interest
   servicesList = [
-    { value: 'family-check-in', label: 'Family Check-in Plan (2 visits/mo - ₹699)' },
-    { value: 'regular-support', label: 'Regular Support Plan (4 visits/mo - ₹1,199)' },
-    { value: 'on-demand-errands', label: 'On-demand Errands (₹399/task)' },
+    { value: 'family-check-in', label: 'Family Check-in Plan (2 visits/mo - ₹499)' },
+    { value: 'regular-support', label: 'Regular Support Plan (4 visits/mo - ₹899)' },
+    { value: 'on-demand-errands', label: 'On-demand Errands (₹299/task)' },
     { value: 'general-inquiry', label: 'General / Custom Requirement' },
   ];
 
@@ -101,6 +101,7 @@ export class ContactComponent implements OnInit {
     this.consultationForm = this.fb.group({
       fullName: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(120)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
+      phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(30)]],
       preferredDate: [
         '',
         [
@@ -160,8 +161,11 @@ export class ContactComponent implements OnInit {
       },
       error: (err) => {
         this.isSubmittingEnquiry.set(false);
+        const errorMsg = err?.error?.message;
         this.enquiryError.set(
-          err?.error?.message || 'Unable to submit your enquiry at this moment. Please call us directly.',
+          Array.isArray(errorMsg)
+            ? errorMsg.join('. ')
+            : (errorMsg || 'Unable to submit your enquiry at this moment. Please call us directly.')
         );
       },
     });
@@ -183,8 +187,11 @@ export class ContactComponent implements OnInit {
       },
       error: (err) => {
         this.isSubmittingConsultation.set(false);
+        const errorMsg = err?.error?.message;
         this.consultationError.set(
-          err?.error?.message || 'Unable to submit your consultation request. Please call us directly.',
+          Array.isArray(errorMsg)
+            ? errorMsg.join('. ')
+            : (errorMsg || 'Unable to submit your consultation request. Please call us directly.')
         );
       },
     });
