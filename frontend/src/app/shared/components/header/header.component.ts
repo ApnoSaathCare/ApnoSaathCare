@@ -29,10 +29,17 @@ export class HeaderComponent {
   }
 
   toggleMobileMenu() {
-    this.isMobileMenuOpen.update((v) => !v);
+    const next = !this.isMobileMenuOpen();
+    this.isMobileMenuOpen.set(next);
+    if (typeof document !== 'undefined') {
+      document.body.classList.toggle('menu-open', next);
+    }
   }
 
   closeMobileMenu() {
     this.isMobileMenuOpen.set(false);
+    if (typeof document !== 'undefined') {
+      document.body.classList.remove('menu-open');
+    }
   }
 }

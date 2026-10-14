@@ -49,6 +49,13 @@
 
 .pricing-main-grid {
   align-items: stretch;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr !important;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .plan-card {
@@ -57,13 +64,17 @@
   position: relative;
   padding: 2.5rem 2rem;
 
+  @media (max-width: 640px) {
+    padding: 1.75rem 1.25rem;
+  }
+
   &.featured {
     border: 2px solid var(--accent);
     box-shadow: var(--shadow-xl);
     transform: scale(1.02);
 
     @media (max-width: 992px) {
-      transform: none;
+      transform: none !important;
     }
   }
 

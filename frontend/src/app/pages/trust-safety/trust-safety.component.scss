@@ -22,6 +22,10 @@
   padding: 3rem 2.5rem;
   background-color: #FFFFFF;
 
+  @media (max-width: 640px) {
+    padding: 1.75rem 1.25rem;
+  }
+
   .boundaries-badge-wrap {
     margin-bottom: 1rem;
   }
@@ -143,6 +147,10 @@
 
 .safety-card {
   padding: 2.25rem;
+
+  @media (max-width: 640px) {
+    padding: 1.5rem 1.25rem;
+  }
 
   .safety-icon {
     width: 48px;
