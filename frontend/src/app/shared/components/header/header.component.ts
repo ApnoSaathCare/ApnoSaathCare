@@ -19,7 +19,7 @@ export class HeaderComponent {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        this.isMobileMenuOpen.set(false);
+        this.closeMobileMenu();
       });
   }
 
