@@ -23,4 +23,6 @@ export interface EnquiryResponse {
   message: string;
   status: string;
   createdAt: string;
+  emailSent?: boolean;
+  emailPreviewUrl?: string;
 }

@@ -72,4 +72,6 @@ export interface ConsultationSubmissionResponse {
   message: string;
   status: string;
   createdAt: Date;
+  emailSent?: boolean;
+  emailPreviewUrl?: string;
 }

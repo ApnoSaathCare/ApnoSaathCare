@@ -15,4 +15,6 @@ export interface ConsultationResponse {
   message: string;
   status: string;
   createdAt: string;
+  emailSent?: boolean;
+  emailPreviewUrl?: string;
 }

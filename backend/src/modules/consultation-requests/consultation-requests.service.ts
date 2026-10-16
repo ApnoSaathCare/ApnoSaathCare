@@ -1,4 +1,4 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException, Optional } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import {
@@ -10,6 +10,7 @@ import {
   ConsultationSubmissionResponse,
 } from './dto/create-consultation-request.dto';
 import { ReferenceGenerator } from '../../common/utils/reference-generator.util';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class ConsultationRequestsService {
@@ -18,6 +19,8 @@ export class ConsultationRequestsService {
   constructor(
     @InjectRepository(ConsultationRequest)
     private readonly consultationRepo: Repository<ConsultationRequest>,
+    @Optional()
+    private readonly mailService?: MailService,
   ) {}
 
   async createRequest(
@@ -54,13 +57,34 @@ export class ConsultationRequestsService {
 
     this.logger.log(`New consultation requested with reference: ${referenceNumber}`);
 
+    // Trigger confirmation email with the same content shown after submission
+    let emailResult;
+    if (this.mailService) {
+      try {
+        emailResult = await this.mailService.sendConsultationConfirmation({
+          referenceNumber: saved.referenceNumber,
+          fullName: saved.fullName,
+          email: saved.email,
+          phone: saved.phone,
+          preferredDate: saved.preferredDate,
+          preferredTimeWindow: saved.preferredTimeWindow,
+          consultationMethod: saved.consultationMethod,
+          supportRequirements: saved.supportRequirements,
+        });
+      } catch (mailErr: any) {
+        this.logger.error(`Failed to send consultation confirmation email: ${mailErr?.message}`);
+      }
+    }
+
     return {
       success: true,
       referenceNumber: saved.referenceNumber,
       message:
-        'Your consultation request has been received. Our Vadodara team will review availability and confirm your scheduled slot.',
+        'Your consultation request has been received. A confirmation email with your reference code has been sent to your email address. Our Vadodara team will review availability and confirm your scheduled slot.',
       status: saved.status,
       createdAt: saved.createdAt,
+      emailSent: emailResult?.success ?? false,
+      emailPreviewUrl: emailResult?.previewUrl,
     };
   }
 

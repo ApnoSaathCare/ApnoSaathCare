@@ -116,4 +116,6 @@ export interface EnquirySubmissionResponse {
   message: string;
   status: string;
   createdAt: Date;
+  emailSent?: boolean;
+  emailPreviewUrl?: string;
 }

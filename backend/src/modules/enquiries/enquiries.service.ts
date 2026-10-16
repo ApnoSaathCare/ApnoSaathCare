@@ -1,9 +1,10 @@
-import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Injectable, Logger, NotFoundException, Optional } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Enquiry, EnquiryStatus } from '../../database/entities/enquiry.entity';
 import { CreateEnquiryDto, EnquirySubmissionResponse } from './dto/create-enquiry.dto';
 import { ReferenceGenerator } from '../../common/utils/reference-generator.util';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class EnquiriesService {
@@ -12,6 +13,8 @@ export class EnquiriesService {
   constructor(
     @InjectRepository(Enquiry)
     private readonly enquiryRepository: Repository<Enquiry>,
+    @Optional()
+    private readonly mailService?: MailService,
   ) {}
 
   async createEnquiry(dto: CreateEnquiryDto): Promise<EnquirySubmissionResponse> {
@@ -57,13 +60,40 @@ export class EnquiriesService {
       `New enquiry recorded with reference: ${referenceNumber} for locality ${savedEnquiry.parentLocality}`,
     );
 
+    // Trigger confirmation email with the same content shown after submission
+    let emailResult;
+    if (this.mailService) {
+      try {
+        emailResult = await this.mailService.sendEnquiryConfirmation({
+          referenceNumber: savedEnquiry.referenceNumber,
+          fullName: savedEnquiry.fullName,
+          email: savedEnquiry.email,
+          phone: savedEnquiry.phone,
+          relationshipToParent: savedEnquiry.relationshipToParent,
+          parentCity: savedEnquiry.parentCity,
+          parentLocality: savedEnquiry.parentLocality,
+          parentPincode: savedEnquiry.parentPincode,
+          parentPreferredName: savedEnquiry.parentPreferredName,
+          serviceOfInterest: savedEnquiry.serviceOfInterest,
+          preferredContactMethod: savedEnquiry.preferredContactMethod,
+          preferredConsultationDate: savedEnquiry.preferredConsultationDate,
+          preferredTimeWindow: savedEnquiry.preferredTimeWindow,
+          message: savedEnquiry.message,
+        });
+      } catch (mailErr: any) {
+        this.logger.error(`Failed to send enquiry confirmation email: ${mailErr?.message}`);
+      }
+    }
+
     return {
       success: true,
       referenceNumber: savedEnquiry.referenceNumber,
       message:
-        'Thank you. Your enquiry has been received. Our team in Vadodara will contact you shortly to understand your family’s needs.',
+        'Thank you. Your enquiry has been received. A confirmation email with your reference code has been sent to your email address. Our team in Vadodara will contact you shortly to understand your family’s needs.',
       status: savedEnquiry.status,
       createdAt: savedEnquiry.createdAt,
+      emailSent: emailResult?.success ?? false,
+      emailPreviewUrl: emailResult?.previewUrl,
     };
   }
 

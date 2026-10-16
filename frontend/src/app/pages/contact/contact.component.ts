@@ -27,6 +27,9 @@ export class ContactComponent implements OnInit {
   enquirySuccess = signal<EnquiryResponse | null>(null);
   consultationSuccess = signal<ConsultationResponse | null>(null);
 
+  submittedEnquiryEmail = signal<string>('');
+  submittedConsultationEmail = signal<string>('');
+
   enquiryError = signal<string | null>(null);
   consultationError = signal<string | null>(null);
 
@@ -154,10 +157,12 @@ export class ContactComponent implements OnInit {
 
     this.isSubmittingEnquiry.set(true);
     this.enquiryError.set(null);
+    const emailVal = this.enquiryForm.get('email')?.value || '';
 
     this.apiService.submitEnquiry(this.enquiryForm.value).subscribe({
       next: (res) => {
         this.isSubmittingEnquiry.set(false);
+        this.submittedEnquiryEmail.set(emailVal);
         this.enquirySuccess.set(res);
         this.scrollToTarget('enquiry-success-card');
       },
@@ -183,10 +188,12 @@ export class ContactComponent implements OnInit {
 
     this.isSubmittingConsultation.set(true);
     this.consultationError.set(null);
+    const emailVal = this.consultationForm.get('email')?.value || '';
 
     this.apiService.submitConsultation(this.consultationForm.value).subscribe({
       next: (res) => {
         this.isSubmittingConsultation.set(false);
+        this.submittedConsultationEmail.set(emailVal);
         this.consultationSuccess.set(res);
         this.scrollToTarget('consultation-success-card');
       },
@@ -205,6 +212,7 @@ export class ContactComponent implements OnInit {
 
   resetEnquiryForm(): void {
     this.enquirySuccess.set(null);
+    this.submittedEnquiryEmail.set('');
     this.enquiryForm.reset({
       parentCity: 'Vadodara',
       serviceOfInterest: 'regular-support',
@@ -216,6 +224,7 @@ export class ContactComponent implements OnInit {
 
   resetConsultationForm(): void {
     this.consultationSuccess.set(null);
+    this.submittedConsultationEmail.set('');
     this.consultationForm.reset({
       consultationMethod: 'PHONE',
     });

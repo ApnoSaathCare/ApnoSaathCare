@@ -108,6 +108,23 @@
                 <span class="ref-code">{{ enquirySuccess()?.referenceNumber }}</span>
               </div>
 
+              <div *ngIf="submittedEnquiryEmail()" class="email-dispatch-notice">
+                <div class="email-notice-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="email-notice-content">
+                  <span class="email-notice-title">Confirmation Email Sent</span>
+                  <span class="email-notice-detail">We've dispatched a copy of your reference code and next steps to <strong>{{ submittedEnquiryEmail() }}</strong></span>
+                </div>
+              </div>
+
+              <div *ngIf="enquirySuccess()?.emailPreviewUrl" class="email-preview-action">
+                <a [href]="enquirySuccess()?.emailPreviewUrl" target="_blank" rel="noopener noreferrer" class="btn-preview-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-sm"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  <span>View Dispatched Email Preview (Dev)</span>
+                </a>
+              </div>
+
               <div class="next-steps-list">
                 <h4>What Happens Next:</h4>
                 <ol>
@@ -335,6 +352,23 @@
               <div class="ref-badge-box">
                 <span class="ref-label">Your Consultation Reference:</span>
                 <span class="ref-code">{{ consultationSuccess()?.referenceNumber }}</span>
+              </div>
+
+              <div *ngIf="submittedConsultationEmail()" class="email-dispatch-notice">
+                <div class="email-notice-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="email-notice-content">
+                  <span class="email-notice-title">Confirmation Email Sent</span>
+                  <span class="email-notice-detail">We've dispatched your consultation slot reference and call details to <strong>{{ submittedConsultationEmail() }}</strong></span>
+                </div>
+              </div>
+
+              <div *ngIf="consultationSuccess()?.emailPreviewUrl" class="email-preview-action">
+                <a [href]="consultationSuccess()?.emailPreviewUrl" target="_blank" rel="noopener noreferrer" class="btn-preview-link">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-sm"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                  <span>View Dispatched Email Preview (Dev)</span>
+                </a>
               </div>
 
               <div class="next-steps-list">
