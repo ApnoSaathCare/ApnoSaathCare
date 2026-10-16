@@ -16,6 +16,7 @@ import { ServicePlansModule } from './modules/service-plans/service-plans.module
 import { ServiceAreasModule } from './modules/service-areas/service-areas.module';
 import { EnquiriesModule } from './modules/enquiries/enquiries.module';
 import { ConsultationRequestsModule } from './modules/consultation-requests/consultation-requests.module';
+import { AssistantModule } from './modules/assistant/assistant.module';
 
 import { runInitialSeeds } from './database/seeds/initial-seed';
 
@@ -83,6 +84,7 @@ import { runInitialSeeds } from './database/seeds/initial-seed';
     ServiceAreasModule,
     EnquiriesModule,
     ConsultationRequestsModule,
+    AssistantModule,
   ],
   providers: [
     {

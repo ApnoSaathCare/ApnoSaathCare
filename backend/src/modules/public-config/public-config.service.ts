@@ -30,11 +30,11 @@ export class PublicConfigService {
       serviceCountry: this.configService.get<string>('PUBLIC_SERVICE_COUNTRY', 'India'),
       supportEmail: this.configService.get<string>(
         'PUBLIC_SUPPORT_EMAIL',
-        'enquiries@aapnosaathcare.example.com',
+        'enquiriesataapnosaathcare@gmail.com',
       ),
       supportPhone: this.configService.get<string>(
         'PUBLIC_SUPPORT_PHONE',
-        '+91 98765 43210',
+        '+91 8780791723',
       ),
       privacyNoticeVersion: this.configService.get<string>(
         'PUBLIC_PRIVACY_VERSION',

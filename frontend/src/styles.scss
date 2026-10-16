@@ -99,6 +99,39 @@ body {
   }
 }
 
+/* Modern Custom Scrollbars */
+.sleek-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(28, 86, 98, 0.22) transparent;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(28, 86, 98, 0.22);
+    border-radius: 9999px;
+
+    &:hover {
+      background-color: rgba(28, 86, 98, 0.4);
+    }
+  }
+}
+
+.no-scroll-track {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+
+  &::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
 /* Typography Defaults */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
@@ -125,6 +158,18 @@ p {
 
 p:last-child {
   margin-bottom: 0;
+}
+
+/* Chat Assistant & User Bubble Paragraph Overrides */
+.chat-message-row.is-user .message-content-wrapper p,
+.chat-message-row.is-user p.chat-p {
+  color: #ffffff !important;
+  margin-bottom: 0 !important;
+}
+
+.chat-message-row.is-assistant .message-content-wrapper p,
+.chat-message-row.is-assistant p.chat-p {
+  color: #0f172a !important;
 }
 
 a {

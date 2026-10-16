@@ -70,6 +70,7 @@ async function bootstrap() {
     .addTag('consultation-requests', 'Consultation booking requests')
     .addTag('public-config', 'Public metadata and contact details')
     .addTag('health', 'System health status')
+    .addTag('ai-assistant', 'AapnoSaath Care Virtual Assistant with Gemini')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);

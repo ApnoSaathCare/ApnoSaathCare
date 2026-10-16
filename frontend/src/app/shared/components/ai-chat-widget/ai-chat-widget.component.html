@@ -1,0 +1,286 @@
+<!-- Floating "Ask AI" Pill Launcher (Matches Screenshot 1) -->
+<button
+  type="button"
+  class="modern-ask-ai-trigger"
+  [class.is-open]="isOpen"
+  [class.has-unread]="hasUnread && !isOpen"
+  (click)="toggleChat()"
+  [attr.aria-expanded]="isOpen"
+  aria-controls="aapnosaath-chat-dialog"
+  aria-label="Open AI Assistant"
+>
+  @if (!isOpen) {
+    <span class="trigger-label">Ask AI</span>
+    @if (hasUnread) {
+      <span class="unread-dot" aria-label="New unread message"></span>
+    }
+  } @else {
+    <svg class="trigger-close-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  }
+</button>
+
+<!-- Modern Docs-Agent Style Chat Dialog (Matches Screenshot 2) -->
+@if (isOpen) {
+  <section
+    id="aapnosaath-chat-dialog"
+    class="modern-agent-dialog"
+    role="dialog"
+    aria-labelledby="agent-title-label"
+    aria-modal="true"
+  >
+    <!-- Top Header -->
+    <header class="dialog-header">
+      <div class="header-left">
+        <!-- Subtle Brand Glyph Icon -->
+        <div class="brand-glyph" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="brand-glyph-svg">
+            <path d="M46.5 76C44 73 33.5 63 24 50C16 39.5 15 28.5 22 20C27.5 13.5 37.5 14.5 44.5 21.5C48 25 49.5 31.5 48.5 36C46 39 42.5 37 39.5 33C36.5 29 30.5 28.5 28 34C25.5 40 33.5 52.5 42 63C44.5 66.5 46 69.5 46.5 76Z" fill="#1C5662"/>
+            <path d="M53.5 76C56 73 66.5 63 76 50C84 39.5 85 28.5 78 20C72.5 13.5 62.5 14.5 55.5 21.5C52 25 50.5 31.5 51.5 36C54 39 57.5 37 60.5 33C63.5 29 69.5 28.5 72 34C74.5 40 66.5 52.5 58 63C55.5 66.5 54 69.5 53.5 76Z" fill="#6EB8A6"/>
+          </svg>
+        </div>
+        <span id="agent-title-label" class="agent-title">Care agent</span>
+      </div>
+
+      <div class="header-right">
+        <!-- Language Switcher -->
+        <div class="lang-switcher" role="group" aria-label="Select language">
+          <button
+            type="button"
+            class="lang-btn"
+            [class.active]="selectedLanguage === 'en'"
+            (click)="selectLanguage('en')"
+            title="English"
+          >
+            EN
+          </button>
+          <span class="lang-sep">•</span>
+          <button
+            type="button"
+            class="lang-btn"
+            [class.active]="selectedLanguage === 'gu'"
+            (click)="selectLanguage('gu')"
+            title="ગુજરાતી"
+          >
+            ગુજ
+          </button>
+          <span class="lang-sep">•</span>
+          <button
+            type="button"
+            class="lang-btn"
+            [class.active]="selectedLanguage === 'hi'"
+            (click)="selectLanguage('hi')"
+            title="हिंदी"
+          >
+            हिं
+          </button>
+        </div>
+
+        <!-- Compose / New Chat (Pencil Icon) -->
+        <button
+          type="button"
+          class="icon-action-btn"
+          (click)="clearConversation()"
+          title="New conversation"
+          aria-label="Start new conversation"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+          </svg>
+        </button>
+
+        <!-- Close 'x' icon -->
+        <button
+          type="button"
+          class="icon-action-btn"
+          (click)="closeChat()"
+          title="Close agent"
+          aria-label="Close assistant"
+        >
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Dialog Content Scroll Canvas -->
+    <div class="dialog-body sleek-scroll" #messagesContainer>
+      <!-- STATE 1: Empty / Zero State (Matches Screenshot 2!) -->
+      @if (!hasStartedConversation) {
+        <div class="zero-state-view">
+          <h2 class="zero-state-title">What can I help you with?</h2>
+
+          <div class="quick-action-list">
+            <!-- 1. Ask a question -->
+            <button
+              type="button"
+              class="quick-action-row"
+              (click)="onQuickActionClick(quickActions[0])"
+            >
+              <div class="row-icon-wrap">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                  <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+              </div>
+              <span class="row-label">{{ quickActions[0].label }}</span>
+            </button>
+
+            <!-- 2. Check Vadodara localities & pincodes -->
+            <button
+              type="button"
+              class="quick-action-row"
+              (click)="onQuickActionClick(quickActions[1])"
+            >
+              <div class="row-icon-wrap">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <span class="row-label">{{ quickActions[1].label }}</span>
+            </button>
+
+            <!-- 3. Explore care plans -->
+            <button
+              type="button"
+              class="quick-action-row"
+              (click)="onQuickActionClick(quickActions[2])"
+            >
+              <div class="row-icon-wrap">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="3"></rect>
+                  <path d="M7 9l3 3-3 3"></path>
+                  <path d="M13 15h4"></path>
+                </svg>
+              </div>
+              <span class="row-label">{{ quickActions[2].label }}</span>
+            </button>
+
+            <!-- 4. Arrange a free consultation -->
+            <button
+              type="button"
+              class="quick-action-row"
+              (click)="onQuickActionClick(quickActions[3])"
+            >
+              <div class="row-icon-wrap">
+                <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+              </div>
+              <span class="row-label">{{ quickActions[3].label }}</span>
+            </button>
+          </div>
+        </div>
+      }
+
+      <!-- STATE 2: Active Conversation Thread -->
+      @for (msg of messages; track msg.id) {
+        <div class="chat-message-row" [class.is-user]="msg.role === 'user'" [class.is-assistant]="msg.role === 'assistant'">
+          @if (msg.role === 'assistant') {
+            <div class="assistant-avatar" aria-hidden="true">
+              <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="assistant-avatar-svg">
+                <path d="M46.5 76C44 73 33.5 63 24 50C16 39.5 15 28.5 22 20C27.5 13.5 37.5 14.5 44.5 21.5C48 25 49.5 31.5 48.5 36C46 39 42.5 37 39.5 33C36.5 29 30.5 28.5 28 34C25.5 40 33.5 52.5 42 63C44.5 66.5 46 69.5 46.5 76Z" fill="#1C5662"/>
+                <path d="M53.5 76C56 73 66.5 63 76 50C84 39.5 85 28.5 78 20C72.5 13.5 62.5 14.5 55.5 21.5C52 25 50.5 31.5 51.5 36C54 39 57.5 37 60.5 33C63.5 29 69.5 28.5 72 34C74.5 40 66.5 52.5 58 63C55.5 66.5 54 69.5 53.5 76Z" fill="#6EB8A6"/>
+              </svg>
+            </div>
+          }
+
+          <div class="message-content-wrapper" [class.is-emergency]="msg.detectedIntent === 'emergency'">
+            <div class="message-text" [innerHTML]="formatMarkdown(msg.content)"></div>
+
+            @if (msg.actionCta) {
+              <div class="cta-action-area">
+                <button
+                  type="button"
+                  class="modern-cta-btn"
+                  [class.cta-emergency]="msg.actionCta.type === 'emergency'"
+                  (click)="handleActionCta(msg.actionCta)"
+                >
+                  <span>{{ msg.actionCta.label }}</span>
+                  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+      }
+
+      <!-- Thinking Indicator -->
+      @if (isLoading) {
+        <div class="chat-message-row is-assistant">
+          <div class="assistant-avatar" aria-hidden="true">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="assistant-avatar-svg">
+              <path d="M46.5 76C44 73 33.5 63 24 50C16 39.5 15 28.5 22 20C27.5 13.5 37.5 14.5 44.5 21.5C48 25 49.5 31.5 48.5 36C46 39 42.5 37 39.5 33C36.5 29 30.5 28.5 28 34C25.5 40 33.5 52.5 42 63C44.5 66.5 46 69.5 46.5 76Z" fill="#1C5662"/>
+              <path d="M53.5 76C56 73 66.5 63 76 50C84 39.5 85 28.5 78 20C72.5 13.5 62.5 14.5 55.5 21.5C52 25 50.5 31.5 51.5 36C54 39 57.5 37 60.5 33C63.5 29 69.5 28.5 72 34C74.5 40 66.5 52.5 58 63C55.5 66.5 54 69.5 53.5 76Z" fill="#6EB8A6"/>
+            </svg>
+          </div>
+          <div class="thinking-bubble">
+            <div class="pulsing-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <span class="thinking-label">Thinking...</span>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Suggested Follow-up Chips -->
+    @if (suggestedActions.length > 0 && !isLoading && hasStartedConversation) {
+      <div class="suggested-chips-bar no-scroll-track" role="group" aria-label="Suggested follow-ups">
+        @for (action of suggestedActions; track action) {
+          <button
+            type="button"
+            class="suggested-chip-btn"
+            (click)="sendPrompt(action)"
+          >
+            <span>{{ action }}</span>
+          </button>
+        }
+      </div>
+    }
+
+    <!-- Bottom Input Area (Matches Screenshot 2 Capsule!) -->
+    <footer class="dialog-footer">
+      <form class="capsule-input-container" (submit)="$event.preventDefault(); sendMessage()">
+        <input
+          #messageInput
+          type="text"
+          [(ngModel)]="userInput"
+          name="userInput"
+          (keydown)="onKeyDown($event)"
+          placeholder="Ask about care plans, Vadodara areas..."
+          aria-label="Ask about care plans, Vadodara areas..."
+          [disabled]="isLoading"
+          autocomplete="off"
+        />
+
+        <button
+          type="submit"
+          class="capsule-send-btn"
+          [disabled]="!userInput.trim() || isLoading"
+          aria-label="Send message"
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+          </svg>
+        </button>
+      </form>
+    </footer>
+  </section>
+}

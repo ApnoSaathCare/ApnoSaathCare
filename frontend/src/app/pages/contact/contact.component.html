@@ -66,7 +66,7 @@
 
       <!-- Right Column: Interactive Tabbed Form Panel -->
       <div class="contact-form-panel">
-        <div class="card form-container-card">
+        <div class="card form-container-card" id="contact-form-top">
           <!-- Modern Pill Segmented Tabs -->
           <div class="form-tabs-container">
             <div class="form-tabs-pill">
@@ -96,7 +96,7 @@
           <!-- TAB 1: ENQUIRY FORM -->
           <div *ngIf="activeTab() === 'enquiry'" class="tab-content-wrap">
             <!-- Success Confirmation Screen -->
-            <div *ngIf="enquirySuccess()" class="submission-success-card animate-fade-in">
+            <div *ngIf="enquirySuccess()" id="enquiry-success-card" class="submission-success-card animate-fade-in" tabindex="-1">
               <div class="success-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
               </div>
@@ -325,7 +325,7 @@
           <!-- TAB 2: CONSULTATION REQUEST FORM -->
           <div *ngIf="activeTab() === 'consultation'" class="tab-content-wrap">
             <!-- Consultation Success Card -->
-            <div *ngIf="consultationSuccess()" class="submission-success-card animate-fade-in">
+            <div *ngIf="consultationSuccess()" id="consultation-success-card" class="submission-success-card animate-fade-in" tabindex="-1">
               <div class="success-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
               </div>

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, timeout } from 'rxjs/operators';
 import { ServicePlan } from '../models/service-plan.model';
 import { ServiceArea, ServiceAreaCheckResult } from '../models/service-area.model';
 import { EnquirySubmissionDto, EnquiryResponse } from '../models/enquiry.model';
 import { ConsultationSubmissionDto, ConsultationResponse } from '../models/consultation.model';
 import { PublicConfig } from '../models/public-config.model';
+import {
+  QuickPromptsResponse,
+  ChatResponse,
+  ChatRequestPayload,
+} from '../models/assistant.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -237,6 +242,94 @@ export class ApiService {
           message: 'Your consultation request has been received. Our Vadodara team will review availability and confirm your scheduled slot.',
           status: 'PENDING_CONFIRMATION',
           createdAt: new Date().toISOString(),
+        });
+      }),
+    );
+  }
+
+  getAssistantQuickPrompts(): Observable<QuickPromptsResponse> {
+    return this.http.get<QuickPromptsResponse>(`${this.baseUrl}/assistant/quick-prompts`).pipe(
+      catchError(() =>
+        of({
+          welcomeMessage:
+            'Namaste! I am the virtual service assistant for AapnoSaath Care. How may I help you care for your parents in Vadodara today? Feel free to ask in English, ગુજરાતી, or हिंदी.',
+          tagline: 'Close to Your Parents. Wherever You Are.',
+          serviceArea: 'Vadodara, Gujarat',
+          prompts: [
+            {
+              label: 'What care plans do you offer?',
+              prompt: 'Can you explain the published care plans, visit frequency, and monthly pricing?',
+              icon: 'layers',
+            },
+            {
+              label: 'Do you cover my area in Vadodara?',
+              prompt: 'Which localities and PIN codes in Vadodara do you currently cover?',
+              icon: 'map-pin',
+            },
+            {
+              label: 'Doctor & hospital visit accompaniment',
+              prompt: 'Can your care companion accompany my parents to their doctor appointments or check-ups?',
+              icon: 'calendar',
+            },
+            {
+              label: 'Book a free family consultation',
+              prompt: 'How do we schedule a free consultation to discuss our parents’ care requirements?',
+              icon: 'users',
+            },
+            {
+              label: 'સેવાઓ વિશે ગુજરાતીમાં જણાવો',
+              prompt: 'નમસ્તે, વડોદરામાં વડીલો માટે તમારી સેવાઓ અને ચાર્જ વિશે ગુજરાતીમાં માહિતી આપો.',
+              icon: 'message-circle',
+            },
+          ],
+        }),
+      ),
+    );
+  }
+
+  sendAssistantChat(payload: ChatRequestPayload): Observable<ChatResponse> {
+    return this.http.post<ChatResponse>(`${this.baseUrl}/assistant/chat`, payload).pipe(
+      timeout(8000),
+      catchError((err) => {
+        const lastMsg = payload.messages[payload.messages.length - 1]?.content.toLowerCase() || '';
+
+        // Emergency detection fallback
+        if (
+          lastMsg.includes('chest pain') ||
+          lastMsg.includes('heart') ||
+          lastMsg.includes('cannot breathe') ||
+          lastMsg.includes('emergency') ||
+          lastMsg.includes('દુખાવો')
+        ) {
+          return of({
+            reply:
+              '⚠️ **URGENT**: If this is a medical emergency, please dial **112** (Emergency) or **108** (Gujarat Ambulance) immediately. AapnoSaath Care provides non-clinical companion visits and cannot respond to acute medical emergencies.',
+            detectedIntent: 'emergency' as const,
+            suggestedActions: ['Call 112 / 108 Emergency', 'Learn About Companion Care'],
+            actionCta: {
+              label: 'Call Emergency 112 / 108',
+              targetUrl: 'tel:112',
+              type: 'emergency' as const,
+            },
+            timestamp: new Date().toISOString(),
+          });
+        }
+
+        return of({
+          reply:
+            'Namaste! AapnoSaath Care provides dedicated elder-care companion visits, hospital accompaniment, and family coordination in **Vadodara, Gujarat**.\n\nOur plans include:\n* **Family Check-in**: ₹1,199/month (2 scheduled visits)\n* **Regular Support**: ₹2,999/month (4 weekly visits + appointment accompaniment)\n* **On-demand Errands**: ₹299–₹699 per task\n\nHow can we assist your parents today?',
+          detectedIntent: 'general' as const,
+          suggestedActions: [
+            'Book a Free Consultation',
+            'Check Vadodara Pincodes',
+            'View Care Plans & Pricing',
+          ],
+          actionCta: {
+            label: 'Book Free Consultation',
+            targetUrl: '/consultation',
+            type: 'consultation' as const,
+          },
+          timestamp: new Date().toISOString(),
         });
       }),
     );

@@ -148,6 +148,7 @@ export class ContactComponent implements OnInit {
   submitEnquiry(): void {
     if (this.enquiryForm.invalid) {
       this.enquiryForm.markAllAsTouched();
+      this.scrollToFirstInvalidControl('enquiry-form');
       return;
     }
 
@@ -158,6 +159,7 @@ export class ContactComponent implements OnInit {
       next: (res) => {
         this.isSubmittingEnquiry.set(false);
         this.enquirySuccess.set(res);
+        this.scrollToTarget('enquiry-success-card');
       },
       error: (err) => {
         this.isSubmittingEnquiry.set(false);
@@ -167,6 +169,7 @@ export class ContactComponent implements OnInit {
             ? errorMsg.join('. ')
             : (errorMsg || 'Unable to submit your enquiry at this moment. Please call us directly.')
         );
+        this.scrollToTarget('contact-form-top');
       },
     });
   }
@@ -174,6 +177,7 @@ export class ContactComponent implements OnInit {
   submitConsultation(): void {
     if (this.consultationForm.invalid) {
       this.consultationForm.markAllAsTouched();
+      this.scrollToFirstInvalidControl('consultation-form');
       return;
     }
 
@@ -184,6 +188,7 @@ export class ContactComponent implements OnInit {
       next: (res) => {
         this.isSubmittingConsultation.set(false);
         this.consultationSuccess.set(res);
+        this.scrollToTarget('consultation-success-card');
       },
       error: (err) => {
         this.isSubmittingConsultation.set(false);
@@ -193,6 +198,7 @@ export class ContactComponent implements OnInit {
             ? errorMsg.join('. ')
             : (errorMsg || 'Unable to submit your consultation request. Please call us directly.')
         );
+        this.scrollToTarget('contact-form-top');
       },
     });
   }
@@ -205,6 +211,7 @@ export class ContactComponent implements OnInit {
       preferredContactMethod: 'PHONE',
       contactConsent: false,
     });
+    this.scrollToTarget('contact-form-top');
   }
 
   resetConsultationForm(): void {
@@ -212,5 +219,69 @@ export class ContactComponent implements OnInit {
     this.consultationForm.reset({
       consultationMethod: 'PHONE',
     });
+    this.scrollToTarget('contact-form-top');
+  }
+
+  private scrollToTarget(targetId: string): void {
+    if (typeof window === 'undefined') return;
+
+    // First scroll pass after DOM mounts the success card
+    setTimeout(() => {
+      const el = document.getElementById(targetId) || document.getElementById('contact-form-top');
+      if (el) {
+        const headerOffset = 90;
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        });
+
+        try {
+          el.setAttribute('tabindex', '-1');
+          el.focus({ preventScroll: true });
+        } catch {
+          // Ignore focus errors
+        }
+      }
+    }, 60);
+
+    // Secondary scroll pass in case of dynamic layout or mobile keyboard collapse
+    setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        const headerOffset = 90;
+        const currentTop = el.getBoundingClientRect().top;
+        if (Math.abs(currentTop - headerOffset) > 25) {
+          const offsetPosition = currentTop + window.pageYOffset - headerOffset;
+          window.scrollTo({
+            top: Math.max(0, offsetPosition),
+            behavior: 'smooth',
+          });
+        }
+      }
+    }, 220);
+  }
+
+  private scrollToFirstInvalidControl(formId: string): void {
+    if (typeof window === 'undefined') return;
+
+    setTimeout(() => {
+      const formEl = document.getElementById(formId);
+      if (!formEl) return;
+      const firstInvalid = formEl.querySelector('.is-invalid, input:invalid, select:invalid, textarea:invalid') as HTMLElement;
+      if (firstInvalid) {
+        const headerOffset = 110;
+        const elementPosition = firstInvalid.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: Math.max(0, offsetPosition),
+          behavior: 'smooth',
+        });
+        firstInvalid.focus({ preventScroll: true });
+      }
+    }, 60);
   }
 }

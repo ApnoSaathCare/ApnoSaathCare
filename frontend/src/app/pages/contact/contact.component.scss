@@ -171,6 +171,7 @@
   border-radius: 20px;
   border: 1.5px solid #D0E5E1;
   box-shadow: 0 16px 40px rgba(28, 86, 98, 0.07);
+  scroll-margin-top: 100px;
 
   @media (max-width: 768px) {
     padding: 1.75rem 1.25rem;
@@ -520,6 +521,8 @@
 .submission-success-card {
   text-align: center;
   padding: 2.5rem 1.5rem;
+  outline: none;
+  scroll-margin-top: 100px;
 
   .success-icon {
     width: 68px;
